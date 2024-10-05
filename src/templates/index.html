@@ -3,5 +3,10 @@
   Home
 {% endblock title %}
 {% block content %}
-  <h1>Home</h1>
+  <h1>Início</h1>
+  <p>Selecione o que deseja fazer.</p>
+  <button>Cadastrar Fornecedor</button>
+  <a href="{{ url_for('client.create') }}" role="button">Cadastrar Cliente</a>
+  <button>Abrir OS</button>
+  <button>Fechar OS</button>
 {% endblock content %}

@@ -5,7 +5,7 @@
 groups = ["default", "lint"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:45e82e9e8a30fb8a54df13f6219a97c69e2d60852dc5d7a608b596dfc692ed73"
+content_hash = "sha256:6ea880a9049b03a39d2b05c77f685f2a898a106776c78395f557be7a395b6b78"
 
 [[metadata.targets]]
 requires_python = "==3.12.*"
@@ -127,6 +127,22 @@ dependencies = [
 files = [
     {file = "flask_sqlalchemy-3.1.1-py3-none-any.whl", hash = "sha256:4ba4be7f419dc72f4efd8802d69974803c37259dd42f3913b0dcf75c9447e0a0"},
     {file = "flask_sqlalchemy-3.1.1.tar.gz", hash = "sha256:e4b68bb881802dda1a7d878b2fc84c06d1ee57fb40b874d3dc97dabfa36b8312"},
+]
+
+[[package]]
+name = "flask-wtf"
+version = "1.2.1"
+requires_python = ">=3.8"
+summary = "Form rendering, validation, and CSRF protection for Flask with WTForms."
+groups = ["default"]
+dependencies = [
+    "flask",
+    "itsdangerous",
+    "wtforms",
+]
+files = [
+    {file = "flask_wtf-1.2.1-py3-none-any.whl", hash = "sha256:fa6793f2fb7e812e0fe9743b282118e581fb1b6c45d414b8af05e659bd653287"},
+    {file = "flask_wtf-1.2.1.tar.gz", hash = "sha256:8bb269eb9bb46b87e7c8233d7e7debdf1f8b74bf90cc1789988c29b37a97b695"},
 ]
 
 [[package]]
@@ -431,4 +447,18 @@ dependencies = [
 files = [
     {file = "werkzeug-3.0.4-py3-none-any.whl", hash = "sha256:02c9eb92b7d6c06f31a782811505d2157837cea66aaede3e217c7c27c039476c"},
     {file = "werkzeug-3.0.4.tar.gz", hash = "sha256:34f2371506b250df4d4f84bfe7b0921e4762525762bbd936614909fe25cd7306"},
+]
+
+[[package]]
+name = "wtforms"
+version = "3.1.2"
+requires_python = ">=3.8"
+summary = "Form validation and rendering for Python web development."
+groups = ["default"]
+dependencies = [
+    "markupsafe",
+]
+files = [
+    {file = "wtforms-3.1.2-py3-none-any.whl", hash = "sha256:bf831c042829c8cdbad74c27575098d541d039b1faa74c771545ecac916f2c07"},
+    {file = "wtforms-3.1.2.tar.gz", hash = "sha256:f8d76180d7239c94c6322f7990ae1216dae3659b7aa1cee94b6318bdffb474b9"},
 ]
