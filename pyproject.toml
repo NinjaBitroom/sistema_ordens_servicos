@@ -7,6 +7,7 @@ authors = [
 ]
 dependencies = [
     "Flask-SQLAlchemy~=3.1",
+    "python-dotenv~=1.0",
 ]
 requires-python = "==3.12.*"
 readme = "README.md"
@@ -14,6 +15,11 @@ license = {text = "MIT"}
 
 [tool.pyprojectx]
 main = ["pdm"]
+
+[tool.pyprojectx.aliases]
+install = "pdm install"
+run = "pdm run"
+start = "@run flask run"
 
 [tool.pdm]
 distribution = false
