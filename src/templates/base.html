@@ -13,9 +13,16 @@
     {% endblock head %}
   </head>
   <body>
-    <div class="container">
+    <header class="container">
+      <nav>
+        <ul>
+          <li><a href="{{ url_for('root.index') }}">SISTEMA DE ORDENS DE SERVIÇOS</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="container">
       {% block content %}
       {% endblock content %}
-    </div>
+    </main>
   </body>
 </html>
