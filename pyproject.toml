@@ -23,3 +23,10 @@ start = "@run flask run"
 
 [tool.pdm]
 distribution = false
+
+[tool.pdm.dev-dependencies]
+lint = [
+    "pyright~=1.1",
+    "ruff~=0.6",
+    "djlint~=1.35",
+]

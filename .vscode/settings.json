@@ -1,0 +1,29 @@
+{
+    "[python]": {
+        "editor.rulers": [72, 79, 99],
+        "editor.defaultFormatter": "charliermarsh.ruff",
+    },
+    "explorer.fileNesting.patterns": {
+        "pdm.toml": "pdm.lock, .pdm-python",
+        "pw": "pw.bat"
+    },
+    "material-icon-theme.languages.associations": {
+        "jinja-html": "html"
+    },
+    "files.associations": {
+        "*.html": "jinja-html",
+        ".flaskenv": "properties",
+        ".djlintrc": "json",
+    },
+    "emmet.includeLanguages": {
+        "jinja-html": "html"
+    },
+    "[jinja-html]": {
+        "djlint.enableLinting": false,
+        "djlint.profile": "jinja",
+        "editor.defaultFormatter": "monosans.djlint",
+        "editor.detectIndentation": false,
+        "editor.tabSize": 2,
+    },
+    "python.languageServer": "Pylance",
+}
