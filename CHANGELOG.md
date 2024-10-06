@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 (2024-10-05)
+
+### Feat
+
+- **clients**: add database and validation
+
 ## 0.3.0 (2024-10-05)
 
 ### Feat
