@@ -1,2 +1,4 @@
+#:schema https://json.schemastore.org/pdm.json
+
 [strategy]
 save = "compatible"

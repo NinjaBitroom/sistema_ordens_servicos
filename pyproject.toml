@@ -1,7 +1,9 @@
+#:schema https://json.schemastore.org/pyproject.json
+
 [project]
 name = "sistema_ordens_servicos"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "SISTEMA DE ORDENS DE SERVIÇOS"
 authors = [
     {name = "Gabriel Bitencourt Marin", email = "gabrielbitercourt@gmail.com"},
 ]
@@ -31,3 +33,65 @@ lint = [
     "ruff~=0.6",
     "djlint~=1.35",
 ]
+commit = [
+    "pre-commit~=4.0",
+    "commitizen~=3.29",
+]
+
+[tool.pdm.scripts]
+post_install = "pre-commit install"
+
+[tool.pyright]
+typeCheckingMode = "basic"
+venvPath = "."
+venv = ".venv"
+ignore = ["pw"]
+
+[tool.ruff]
+fix = true
+show-fixes = true
+line-length = 79
+extend-exclude = ["pw"]
+
+[tool.ruff.format]
+docstring-code-format = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "W191",
+    "E111",
+    "E114",
+    "E117",
+    "D206",
+    "D300",
+    "Q000",
+    "Q001",
+    "Q002",
+    "Q003",
+    "COM812",
+    "COM819",
+    "ISC001",
+    "ISC002",
+    "ANN101",
+    "ANN102",
+    "D203",
+    "D213",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["S101", "SLF001", "S105", "S106"]
+
+[tool.ruff.lint.isort]
+force-single-line = false
+force-wrap-aliases = false
+lines-after-imports = -1
+lines-between-types = 0
+split-on-trailing-comma = true
+
+[tool.ruff.lint.pycodestyle]
+max-doc-length = 72
+max-line-length = 99
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
