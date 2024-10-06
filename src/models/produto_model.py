@@ -10,4 +10,3 @@ class ProdutoModel(DB.Model):
     valor_venda: Mapped[float]
     quantidade_em_estoque: Mapped[int]
     marca: Mapped[MarcaModel]
-    

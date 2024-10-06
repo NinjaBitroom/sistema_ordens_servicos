@@ -6,4 +6,3 @@ class EscolaridadeModel(DB.Model):
     __tablename__ = 'Escolaridades'
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str]
-    
