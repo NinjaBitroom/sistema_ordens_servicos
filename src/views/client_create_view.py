@@ -1,11 +1,14 @@
 """."""
 
+from typing import cast
+
 from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
 
 from src.controllers.client_create_controller import ClientCreateController
 from src.forms.cliente_form import ClienteForm
 from src.models.cliente_model import ClienteModel
+from src.services.base_model import BaseModel
 from src.services.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
@@ -20,7 +23,7 @@ class ClientCreateView(MethodView):
         """."""
         self.form: ClienteForm = ClienteForm()
         flask_sql_alchemy_operations = FlaskSqlAlchemyOperations(
-            ClienteModel, DB
+            cast(type[BaseModel], ClienteModel), DB
         )
         flask_wtf_validation = FlaskWtfValidation()
         self.controller = ClientCreateController(
