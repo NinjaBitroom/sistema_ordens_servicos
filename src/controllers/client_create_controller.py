@@ -15,12 +15,12 @@ class ClientCreateController(Controller):
         db_add_one_operation: DbAddOneOperation,
     ) -> None:
         """."""
-        self.validation = validation
-        self.db_add_one_operation = db_add_one_operation
+        self.__VALIDATION = validation
+        self.__DB_ADD_ONE_OPERATION = db_add_one_operation
 
     def handle(self, request: ClienteForm) -> None | Exception:
         """."""
-        exception = self.validation.validate(request)
+        exception = self.__VALIDATION.validate(request)
         if exception is None:
-            self.db_add_one_operation.add_one(request.data)
+            self.__DB_ADD_ONE_OPERATION.add_one(request.data)
         return exception

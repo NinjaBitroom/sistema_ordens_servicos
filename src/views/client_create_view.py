@@ -21,25 +21,25 @@ class ClientCreateView(MethodView):
 
     def __init__(self) -> None:
         """."""
-        self.form: ClienteForm = ClienteForm()
+        self.__FORM: ClienteForm = ClienteForm()
         flask_sql_alchemy_operations = FlaskSqlAlchemyOperations(
             cast(type[BaseModel], ClienteModel), DB
         )
         flask_wtf_validation = FlaskWtfValidation()
-        self.controller = ClientCreateController(
+        self.__CONTROLLER = ClientCreateController(
             flask_wtf_validation, flask_sql_alchemy_operations
         )
 
     def get(self) -> object:
         """."""
-        return render_template("client/create.html", form=self.form)
+        return render_template("client/create.html", form=self.__FORM)
 
     def post(self) -> object:
         """."""
-        response = self.controller.handle(self.form)
+        response = self.__CONTROLLER.handle(self.__FORM)
         if response is None:
             flash("Cliente cadastrado com sucesso")
             return redirect(url_for("client.index"))
         for error in response.args:
             flash(error, "error")
-        return render_template("client/create.html", form=self.form)
+        return render_template("client/create.html", form=self.__FORM)

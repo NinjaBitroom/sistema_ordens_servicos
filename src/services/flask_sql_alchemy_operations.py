@@ -17,19 +17,19 @@ class FlaskSqlAlchemyOperations[T: BaseModel](
 
     def __init__(self, model: type[T], db: SQLAlchemy) -> None:
         """."""
-        self.model = model
-        self.db = db
+        self.__MODEL = model
+        self.__DB = db
 
     def add_one(self, data: dict[str, Any]) -> None:
         """."""
         cleaned_data = {}
-        for field in fields(self.model):
+        for field in fields(self.__MODEL):
             if field.name not in data:
                 continue
             cleaned_data[field.name] = data[field.name]
-        self.db.session.add(self.model(**cleaned_data))
-        self.db.session.commit()
+        self.__DB.session.add(self.__MODEL(**cleaned_data))
+        self.__DB.session.commit()
 
     def get_all(self) -> list[T]:
         """."""
-        return self.db.session.query(self.model).all()
+        return self.__DB.session.query(self.__MODEL).all()

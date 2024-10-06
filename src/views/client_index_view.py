@@ -19,11 +19,11 @@ class ClientIndexView(MethodView):
 
     def __init__(self) -> None:
         """."""
-        self.controller = ClientListController(
+        self.__CONTROLLER = ClientListController(
             FlaskSqlAlchemyOperations(cast(type[BaseModel], ClienteModel), DB)
         )
 
     def get(self) -> object:
         """."""
-        response = self.controller.handle()
+        response = self.__CONTROLLER.handle()
         return render_template("client/index.html", clients=response)
