@@ -4,7 +4,7 @@ from collections.abc import Sequence
 from typing import Any
 
 from src.protocols.controller import Controller
-from src.protocols.db_get_all_operation import DbGetAllOperation
+from src.protocols.db.db_get_all_operation import DbGetAllOperation
 
 
 class ClientListController(Controller):

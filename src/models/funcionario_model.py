@@ -6,8 +6,8 @@ from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from models.cargo_funcionario_model import CargoFuncionarioModel
-from models.endereco_model import EnderecoModel
-from models.telefones_model import TelefonesModel
+from src.models.base.endereco_model import EnderecoModel
+from src.models.base.telefones_model import TelefonesModel
 
 
 class FuncionarioModel(EnderecoModel, TelefonesModel):

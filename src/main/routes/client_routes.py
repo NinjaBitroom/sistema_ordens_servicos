@@ -2,8 +2,8 @@
 
 from flask import Blueprint
 
-from src.views.client_create_view import ClientCreateView
-from src.views.client_index_view import ClientIndexView
+from src.views.client.client_create_view import ClientCreateView
+from src.views.client.client_index_view import ClientIndexView
 
 CLIENT_BLUEPRINT = Blueprint("client", __name__)
 

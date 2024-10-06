@@ -4,8 +4,8 @@ from datetime import datetime
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from models.endereco_model import EnderecoModel
-from models.telefones_model import TelefonesModel
+from src.models.base.endereco_model import EnderecoModel
+from src.models.base.telefones_model import TelefonesModel
 
 
 class EmpresaModel(EnderecoModel, TelefonesModel):
