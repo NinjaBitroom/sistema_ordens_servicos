@@ -3,9 +3,9 @@
 from abc import ABC, abstractmethod
 
 
-class Controller(ABC):
+class Controller[TReq, TRes](ABC):
     """."""
 
     @abstractmethod
-    def handle(self, request: object) -> object:
+    def handle(self, request: TReq) -> TRes:
         """."""
