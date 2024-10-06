@@ -1,15 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
   <h1>Cadastrar Cliente</h1>
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-  {% endwith %}
   <form action="{{ url_for('client.create') }}" method="post">
     {{ form.csrf_token }}
     {{ form.nome.label }}

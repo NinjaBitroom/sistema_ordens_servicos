@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
+    <meta name="description" content="Sistema de ordens de serviços">
+    <meta name="keywords"
+          content="ordens de serviços, sistema, gestão, serviços">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
@@ -13,14 +16,9 @@
     {% endblock head %}
   </head>
   <body>
-    <header class="container">
-      <nav>
-        <ul>
-          <li><a href="{{ url_for('root.index') }}">SISTEMA DE ORDENS DE SERVIÇOS</a></li>
-        </ul>
-      </nav>
-    </header>
+    {% include "includes/header.html" %}
     <main class="container">
+      {% include "includes/messages.html" %}
       {% block content %}
       {% endblock content %}
     </main>
