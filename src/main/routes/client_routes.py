@@ -1,6 +1,8 @@
+"""."""
+
 from flask import Blueprint
 
-from src.views.client_views import ClientCreateView
+from src.views.client_create_view import ClientCreateView
 
 client_blueprint = Blueprint("client", __name__)
 

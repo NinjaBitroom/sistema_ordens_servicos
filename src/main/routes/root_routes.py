@@ -1,6 +1,8 @@
+"""."""
+
 from flask import Blueprint
 
-from src.views.root_views import IndexView
+from src.views.index_view import IndexView
 
 root_blueprint = Blueprint("root", __name__)
 
