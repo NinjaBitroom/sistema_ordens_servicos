@@ -3,9 +3,9 @@
 from abc import ABC, abstractmethod
 
 
-class FormController(ABC):
+class Validation(ABC):
     """."""
 
     @abstractmethod
-    def validate(self) -> object:
+    def validate(self, data: object) -> None | Exception:
         """."""

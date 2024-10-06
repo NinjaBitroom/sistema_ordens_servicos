@@ -8,6 +8,7 @@ from src.forms.cliente_form import ClienteForm
 from src.models.cliente_model import ClienteModel
 from src.services.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
+from src.utils.flask_wtf_validation import FlaskWtfValidation
 
 
 class ClientCreateView(MethodView):
@@ -21,8 +22,9 @@ class ClientCreateView(MethodView):
         flask_sql_alchemy_operations = FlaskSqlAlchemyOperations(
             ClienteModel, DB
         )
+        flask_wtf_validation = FlaskWtfValidation()
         self.controller = ClientCreateController(
-            self.form, flask_sql_alchemy_operations
+            flask_wtf_validation, flask_sql_alchemy_operations
         )
 
     def get(self) -> object:
@@ -31,7 +33,7 @@ class ClientCreateView(MethodView):
 
     def post(self) -> object:
         """."""
-        response = self.controller.validate()
+        response = self.controller.handle(self.form)
         if response is None:
             flash("Cliente cadastrado com sucesso")
             return redirect(url_for("root.index"))
