@@ -2,8 +2,8 @@
 
 from flask import Blueprint
 
-from src.views.index_view import IndexView
+from src.main.factories.views.index_view_factory import make_index_view
 
 ROOT_BLUEPRINT = Blueprint("root", __name__)
 
-ROOT_BLUEPRINT.add_url_rule("/", view_func=IndexView.as_view("index"))
+ROOT_BLUEPRINT.add_url_rule("/", view_func=make_index_view())
