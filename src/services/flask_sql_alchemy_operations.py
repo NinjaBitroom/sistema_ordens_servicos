@@ -1,5 +1,8 @@
 """."""
 
+from dataclasses import fields
+from typing import Any
+
 from flask_sqlalchemy import SQLAlchemy
 
 from src.protocols.db_add_one_operation import DbAddOneOperation
@@ -14,7 +17,12 @@ class FlaskSqlAlchemyOperations[T: BaseModel](DbAddOneOperation):
         self.model = model
         self.db = db
 
-    def add_one(self, data: T) -> None:
+    def add_one(self, data: dict[str, Any]) -> None:
         """."""
-        self.db.session.add(data)
+        cleaned_data = {}
+        for field in fields(self.model):
+            if field.name not in data:
+                continue
+            cleaned_data[field.name] = data[field.name]
+        self.db.session.add(self.model(**cleaned_data))
         self.db.session.commit()
