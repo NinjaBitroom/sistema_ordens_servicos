@@ -3,10 +3,8 @@
   Home
 {% endblock title %}
 {% block content %}
-  <h1>Início</h1>
-  <p>Selecione o que deseja fazer.</p>
-  <button>Cadastrar Fornecedor</button>
-  <a href="{{ url_for('client.create') }}" role="button">Cadastrar Cliente</a>
-  <button>Abrir OS</button>
-  <button>Fechar OS</button>
+  <h1>Gerenciamento</h1>
+  <button>Fornecedores</button>
+  <a href="{{ url_for('client.index') }}" role="button">Clientes</a>
+  <button>Ordens de Serviços</button>
 {% endblock content %}

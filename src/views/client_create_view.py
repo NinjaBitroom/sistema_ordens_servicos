@@ -39,7 +39,7 @@ class ClientCreateView(MethodView):
         response = self.controller.handle(self.form)
         if response is None:
             flash("Cliente cadastrado com sucesso")
-            return redirect(url_for("root.index"))
+            return redirect(url_for("client.index"))
         for error in response.args:
             flash(error, "error")
         return render_template("client/create.html", form=self.form)

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+  <a href="{{ url_for('client.index') }}">Voltar</a>
   <h1>Cadastrar Cliente</h1>
   <form action="{{ url_for('client.create') }}" method="post">
     {{ form.csrf_token }}

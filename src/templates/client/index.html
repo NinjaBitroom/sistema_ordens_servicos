@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}
+  Gerenciar Clientes
+{% endblock title %}
+{% block content %}
+  <h1>Gerenciar Clientes</h1>
+  <a href="{{ url_for('client.create') }}" role="button">Cadastrar Cliente</a>
+{% endblock content %}
