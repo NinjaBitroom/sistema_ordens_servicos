@@ -1,24 +1,32 @@
-from typing import Any
+"""."""
 
-from flask import render_template, flash
+from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
 
+from src.controllers.client_create_controller import ClientCreateController
 from src.forms.client_form import ClientForm
 
 
 class ClientCreateView(MethodView):
-    methods = ["GET", "POST"]
+    """."""
+
+    methods = "GET", "POST"
 
     def __init__(self) -> None:
+        """."""
         self.form: ClientForm = ClientForm()
+        self.controller = ClientCreateController(self.form)
 
-    def get(self) -> Any:
+    def get(self) -> object:
+        """."""
         return render_template("client/create.html", form=self.form)
 
-    def post(self) -> Any:
-        if self.form.validate_on_submit():
-            return "Success"
-        for field, errors in self.form.errors.items():
-            for error in errors:
-                flash(f"{field}: {error}")
+    def post(self) -> object:
+        """."""
+        response = self.controller.validate()
+        if response is None:
+            flash("Cliente cadastrado com sucesso")
+            return redirect(url_for("root.index"))
+        for error in response.args:
+            flash(error, "error")
         return render_template("client/create.html", form=self.form)

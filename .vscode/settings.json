@@ -21,7 +21,6 @@
         "jinja-html": "html"
     },
     "[jinja-html]": {
-        "djlint.enableLinting": false,
         "djlint.profile": "jinja",
         "editor.defaultFormatter": "monosans.djlint",
         "editor.detectIndentation": false,
