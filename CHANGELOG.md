@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0 (2024-10-05)
+
+### Feat
+
+- **clients**: add ClientCreateController
+
 ## 0.2.0 (2024-10-05)
 
 ### Feat
