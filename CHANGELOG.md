@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.5.0 (2024-10-06)
+
+### Feat
+
+- query clients to a table
+- add query to list all clients
+- add ClientIndexView
+- move validation to utils layer
+
+### Refactor
+
+- apply dependency reversion to views
+- create factories for views
+- reorganize project folder structure
+- make some publics attributes privates and constants
+- move DB Framework logic to DbOperations class
+- move messages and header to includes folder
+- improve FlaskSqlAlchemyOperations type hints
+- rename views files to match classes names
+
 ## 0.4.0 (2024-10-05)
 
 ### Feat
