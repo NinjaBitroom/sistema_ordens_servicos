@@ -1,9 +1,7 @@
+"""."""
+
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.orm import DeclarativeBase, MappedAsDataclass
 
+from src.services.base_model import BaseModel
 
-class Base(DeclarativeBase, MappedAsDataclass):
-    pass
-
-
-DB = SQLAlchemy(model_class=Base)
+DB = SQLAlchemy(model_class=BaseModel)

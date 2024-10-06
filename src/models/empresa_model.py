@@ -1,13 +1,17 @@
+"""."""
+
 from datetime import datetime
 
 from sqlalchemy.orm import Mapped, mapped_column
 
 from models.endereco_model import EnderecoModel
-from models.telefones_model import TelefoneModel
+from models.telefones_model import TelefonesModel
 
 
-class EmpresaModel(EnderecoModel, TelefoneModel):
-    __tablename__ = "Contas a receber"
+class EmpresaModel(EnderecoModel, TelefonesModel):
+    """."""
+
+    __tablename__ = "Empresa"
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str]
     cnpj: Mapped[str]

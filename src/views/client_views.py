@@ -4,7 +4,10 @@ from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
 
 from src.controllers.client_create_controller import ClientCreateController
-from src.forms.client_form import ClientForm
+from src.forms.cliente_form import ClienteForm
+from src.models.cliente_model import ClienteModel
+from src.services.database import DB
+from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 
 
 class ClientCreateView(MethodView):
@@ -14,8 +17,13 @@ class ClientCreateView(MethodView):
 
     def __init__(self) -> None:
         """."""
-        self.form: ClientForm = ClientForm()
-        self.controller = ClientCreateController(self.form)
+        self.form: ClienteForm = ClienteForm()
+        flask_sql_alchemy_operations = FlaskSqlAlchemyOperations(
+            ClienteModel, DB
+        )
+        self.controller = ClientCreateController(
+            self.form, flask_sql_alchemy_operations
+        )
 
     def get(self) -> object:
         """."""

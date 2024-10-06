@@ -12,18 +12,30 @@
   {% endwith %}
   <form action="{{ url_for('client.create') }}" method="post">
     {{ form.csrf_token }}
-    {{ form.name.label }}
-    {{ form.name }}
-    {{ form.gender.label }}
-    {{ form.gender }}
-    {{ form.birth_date.label }}
-    {{ form.birth_date }}
+    {{ form.nome.label }}
+    {{ form.nome }}
+    {{ form.sexo.label }}
+    {{ form.sexo }}
+    {{ form.nascimento.label }}
+    {{ form.nascimento }}
     {{ form.cpf.label }}
     {{ form.cpf }}
-    {{ form.registration_date.label }}
-    {{ form.registration_date }}
+    {{ form.data_de_cadastro.label }}
+    {{ form.data_de_cadastro }}
     {{ form.email.label }}
     {{ form.email }}
+    {{ form.endereco_rua.label }}
+    {{ form.endereco_rua }}
+    {{ form.endereco_numero.label }}
+    {{ form.endereco_numero }}
+    {{ form.endereco_bairro.label }}
+    {{ form.endereco_bairro }}
+    {{ form.endereco_cep.label }}
+    {{ form.endereco_cep }}
+    {{ form.telefone_fixo.label }}
+    {{ form.telefone_fixo }}
+    {{ form.telefone_celular.label }}
+    {{ form.telefone_celular }}
     {{ form.submit }}
   </form>
 {% endblock content %}

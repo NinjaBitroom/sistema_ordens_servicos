@@ -3,9 +3,9 @@
 from abc import ABC, abstractmethod
 
 
-class FlaskWtfController(ABC):
+class DbAddOneOperation[T](ABC):
     """."""
 
     @abstractmethod
-    def validate(self) -> object:
+    def add_one(self, data: T) -> object:
         """."""

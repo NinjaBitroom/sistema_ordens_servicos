@@ -1,6 +1,7 @@
+"""."""
+
 from datetime import datetime
 
-from flask_wtf import FlaskForm
 from wtforms import (
     DateField,
     EmailField,
@@ -10,17 +11,22 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired
 
+from src.forms.endereco_form import EnderecoForm
+from src.forms.telefones_form import TelefonesForm
 
-class ClientForm(FlaskForm):
-    name = StringField("Nome", validators=[DataRequired()])
-    gender = SelectField(
+
+class ClienteForm(EnderecoForm, TelefonesForm):
+    """."""
+
+    nome = StringField("Nome", validators=[DataRequired()])
+    sexo = SelectField(
         "Gênero",
         choices=[("M", "Masculino"), ("F", "Feminino")],
         validators=[DataRequired()],
     )
-    birth_date = DateField("Data de Nascimento", validators=[DataRequired()])
+    nascimento = DateField("Data de Nascimento", validators=[DataRequired()])
     cpf = StringField("CPF", validators=[DataRequired()])
-    registration_date = DateField(
+    data_de_cadastro = DateField(
         "Data de Cadastro", validators=[DataRequired()], default=datetime.now
     )
     email = EmailField("E-mail", validators=[DataRequired()])
