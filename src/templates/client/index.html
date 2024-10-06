@@ -5,4 +5,9 @@
 {% block content %}
   <h1>Gerenciar Clientes</h1>
   <a href="{{ url_for('client.create') }}" role="button">Cadastrar Cliente</a>
+  {% for client in clients %}
+    <p>{{ client }}</p>
+  {% else %}
+    Não há clientes cadastrados.
+  {% endfor %}
 {% endblock content %}

@@ -1,0 +1,20 @@
+"""."""
+
+from collections.abc import Sequence
+from typing import Any
+
+from src.protocols.controller import Controller
+from src.protocols.db_get_all_operation import DbGetAllOperation
+
+
+class ClientListController(Controller):
+    """."""
+
+    def __init__(self, db_get_all_operation: DbGetAllOperation) -> None:
+        """."""
+        self.db_get_all_operation = db_get_all_operation
+
+    def handle(self, request: None = None) -> Sequence[Any] | Exception:
+        """."""
+        _ = request
+        return self.db_get_all_operation.get_all()
