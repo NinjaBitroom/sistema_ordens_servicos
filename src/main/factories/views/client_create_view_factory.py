@@ -2,7 +2,9 @@
 
 from flask.typing import RouteCallable
 
-from src.controllers.client_create_controller import ClientCreateController
+from src.controllers.client.client_create_controller import (
+    ClientCreateController,
+)
 from src.forms.cliente_form import ClienteForm
 from src.models.cliente_model import ClienteModel
 from src.services.database import DB
