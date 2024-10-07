@@ -1,6 +1,6 @@
 """."""
 
-from wtforms import DateField, EmailField, StringField
+from wtforms import DateField, EmailField, StringField, SubmitField
 from wtforms.validators import DataRequired
 
 from src.forms.endereco_form import EnderecoForm
@@ -16,3 +16,4 @@ class FornecedorForm(EnderecoForm, TelefonesForm):
     data_de_cadastro = DateField(
         "Data de Cadastro", validators=[DataRequired()]
     )
+    submit = SubmitField("Salvar")

@@ -5,17 +5,17 @@ from http import HTTPMethod
 from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
 
-from src.forms.cliente_form import ClienteForm
+from src.forms.fornecedor_form import FornecedorForm
 from src.protocols.controller import Controller
 from src.protocols.form.form_create_response import FormCreateResponse
 from src.protocols.http.http_request import HttpRequest
 
 
-class ClientCreateView(MethodView):
+class SupplierCreateView(MethodView):
     """."""
 
     def __init__(
-        self, controller: Controller[None, FormCreateResponse[ClienteForm]]
+        self, controller: Controller[None, FormCreateResponse[FornecedorForm]]
     ) -> None:
         """."""
         self.__CONTROLLER = controller
@@ -25,7 +25,7 @@ class ClientCreateView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("client/create.html", form=response.body.form)
+        return render_template("supplier/create.html", form=response.body.form)
 
     def post(self) -> object:
         """."""
@@ -33,8 +33,8 @@ class ClientCreateView(MethodView):
             HttpRequest(method=HTTPMethod.POST, body=None)
         )
         if response.body.exception is None:
-            flash("Cliente cadastrado com sucesso")
-            return redirect(url_for("client.index"))
+            flash("Fornecedor cadastrado com sucesso")
+            return redirect(url_for("supplier.index"))
         for error in response.body.exception.args:
             flash(error, "error")
-        return render_template("client/create.html", form=response.body.form)
+        return render_template("supplier/create.html", form=response.body.form)

@@ -2,7 +2,7 @@
 
 from http import HTTPStatus
 
-from src.forms.cliente_form import ClienteForm
+from src.forms.fornecedor_form import FornecedorForm
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.form.form_create_response import FormCreateResponse
@@ -12,16 +12,18 @@ from src.protocols.http.http_response import HttpResponse
 from src.protocols.validaton import Validation
 
 
-class ClientCreateController(
-    Controller[None, FormCreateResponse[ClienteForm]]
+class SupplierCreateController(
+    Controller[None, FormCreateResponse[FornecedorForm]]
 ):
     """."""
 
     def __init__(
         self,
-        validation: Validation[ClienteForm],
+        validation: Validation[FornecedorForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[type[ClienteForm], ClienteForm],
+        get_form_operation: GetFormOperation[
+            type[FornecedorForm], FornecedorForm
+        ],
     ) -> None:
         """."""
         self.__VALIDATION = validation
@@ -30,10 +32,10 @@ class ClientCreateController(
 
     def handle(
         self, request: HttpRequest[None]
-    ) -> HttpResponse[FormCreateResponse[ClienteForm]]:
+    ) -> HttpResponse[FormCreateResponse[FornecedorForm]]:
         """."""
         exception = None
-        form = self.__GET_FORM_OPERATION.get_form(ClienteForm)
+        form = self.__GET_FORM_OPERATION.get_form(FornecedorForm)
         if request.method == "POST":
             exception = self.__VALIDATION.validate(form)
             if exception is None:

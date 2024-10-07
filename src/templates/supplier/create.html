@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+  <a href="{{ url_for('supplier.index') }}">Voltar</a>
+  <h1>Cadastrar Fornecedor</h1>
+  <form action="{{ url_for('supplier.create') }}" method="post">
+    {{ form.csrf_token }}
+    {{ form.nome.label }}
+    {{ form.nome }}
+    {{ form.cnpj.label }}
+    {{ form.cnpj }}
+    {{ form.data_de_cadastro.label }}
+    {{ form.data_de_cadastro }}
+    {{ form.email.label }}
+    {{ form.email }}
+    {{ form.endereco_rua.label }}
+    {{ form.endereco_rua }}
+    {{ form.endereco_numero.label }}
+    {{ form.endereco_numero }}
+    {{ form.endereco_bairro.label }}
+    {{ form.endereco_bairro }}
+    {{ form.endereco_cep.label }}
+    {{ form.endereco_cep }}
+    {{ form.telefone_fixo.label }}
+    {{ form.telefone_fixo }}
+    {{ form.telefone_celular.label }}
+    {{ form.telefone_celular }}
+    {{ form.submit }}
+  </form>
+{% endblock content %}

@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
   <h1>Gerenciar Fornecedores</h1>
-  <a href="#" role="button">Cadastrar Fornecedor</a>
+  <a href="{{ url_for('supplier.create') }}" role="button">Cadastrar Fornecedor</a>
   <table>
     <thead>
       <tr>
@@ -14,7 +14,19 @@
       </tr>
     </thead>
     <tbody>
+      {% for supplier in suppliers %}
+        <tr>
+          <td>{{ supplier.nome }}</td>
+          <td>{{ supplier.cnpj }}</td>
+          <td>
+            <a href="#" role="button">Visualizar</a>
+            <a href="#" role="button">Editar</a>
+            <a href="#" role="button">Excluir</a>
+          </td>
+        </tr>
+      {% else %}
         Não há fornecedores cadastrados.
+      {% endfor %}
     </tbody>
   </table>
 {% endblock content %}
