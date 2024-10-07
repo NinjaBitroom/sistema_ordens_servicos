@@ -2,10 +2,10 @@
 
 from flask import Blueprint
 
-from src.main.factories.views.client_create_view_factory import (
+from src.main.factories.views.client.client_create_view_factory import (
     make_client_create_view,
 )
-from src.main.factories.views.client_index_view_factory import (
+from src.main.factories.views.client.client_index_view_factory import (
     make_client_index_view,
 )
 

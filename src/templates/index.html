@@ -4,7 +4,7 @@
 {% endblock title %}
 {% block content %}
   <h1>Gerenciamento</h1>
-  <button>Fornecedores</button>
+  <a href="{{ url_for('supplier.index') }}" role="button">Fornecedores</a>
   <a href="{{ url_for('client.index') }}" role="button">Clientes</a>
   <button>Ordens de Serviços</button>
 {% endblock content %}
