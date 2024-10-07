@@ -2,10 +2,11 @@
 
 from sqlalchemy.orm import Mapped
 
+from src.services.base_model import BaseModel
 from src.services.database import DB
 
 
-class EnderecoModel(DB.Model):
+class EnderecoModel(DB.Model, BaseModel):
     """."""
 
     __abstract__ = True

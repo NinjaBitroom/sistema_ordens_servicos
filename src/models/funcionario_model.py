@@ -19,8 +19,8 @@ class FuncionarioModel(EnderecoModel, TelefonesModel):
     sexo: Mapped[str | None] = mapped_column(String(1))
     nascimento: Mapped[date | None]
     cpf: Mapped[str | None]
+    email: Mapped[str | None]
+    cargo: Mapped[CargoFuncionarioModel]
     data_de_cadastro: Mapped[datetime | None] = mapped_column(
         default_factory=datetime.now
     )
-    email: Mapped[str | None]
-    cargo: Mapped[CargoFuncionarioModel]

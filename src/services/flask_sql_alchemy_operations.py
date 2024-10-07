@@ -12,7 +12,7 @@ from src.services.base_model import BaseModel
 
 
 class FlaskSqlAlchemyOperations[T: BaseModel](
-    DbAddOneOperation, DbGetAllOperation
+    DbAddOneOperation, DbGetAllOperation[T]
 ):
     """."""
 
