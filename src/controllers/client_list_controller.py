@@ -2,7 +2,6 @@
 
 from collections.abc import Sequence
 from http import HTTPStatus
-from typing import Any
 
 from src.models.cliente_model import ClienteModel
 from src.protocols.controller import Controller
@@ -11,7 +10,9 @@ from src.protocols.http.http_request import HttpRequest
 from src.protocols.http.http_response import HttpResponse
 
 
-class ClientListController(Controller[None, Sequence[Any] | Exception]):
+class ClientListController(
+    Controller[None, Sequence[ClienteModel] | Exception]
+):
     """."""
 
     def __init__(
@@ -22,7 +23,7 @@ class ClientListController(Controller[None, Sequence[Any] | Exception]):
 
     def handle(
         self, request: HttpRequest[None]
-    ) -> HttpResponse[Sequence[Any] | Exception]:
+    ) -> HttpResponse[Sequence[ClienteModel] | Exception]:
         """."""
         _ = request
         response = self.__DB_GET_ALL_OPERATION.get_all()
