@@ -1,5 +1,6 @@
 """."""
 
+from collections.abc import Mapping
 from dataclasses import fields
 from typing import Any
 
@@ -20,7 +21,7 @@ class FlaskSqlAlchemyOperations[T: BaseModel](
         self.__MODEL = model
         self.__DB = db
 
-    def add_one(self, data: dict[str, Any]) -> None:
+    def add_one(self, data: Mapping[str, Any]) -> None:
         """."""
         cleaned_data = {}
         for field in fields(self.__MODEL):

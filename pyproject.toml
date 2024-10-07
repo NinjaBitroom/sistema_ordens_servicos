@@ -42,7 +42,7 @@ commit = [
 post_install = "pre-commit install"
 
 [tool.pyright]
-typeCheckingMode = "basic"
+typeCheckingMode = "strict"
 venvPath = "."
 venv = ".venv"
 ignore = ["pw"]

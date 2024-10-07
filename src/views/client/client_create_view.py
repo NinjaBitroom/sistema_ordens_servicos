@@ -1,10 +1,13 @@
 """."""
 
+from http import HTTPMethod
+
 from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
-from wtforms import Form
 
 from src.protocols.controller import Controller
+from src.protocols.form.client_create_response import ClientCreateResponse
+from src.protocols.http.http_request import HttpRequest
 
 
 class ClientCreateView(MethodView):
@@ -13,22 +16,26 @@ class ClientCreateView(MethodView):
     methods = "GET", "POST"
 
     def __init__(
-        self, controller: Controller[Form, Exception | None], form: type[Form]
+        self, controller: Controller[None, ClientCreateResponse]
     ) -> None:
         """."""
         self.__CONTROLLER = controller
-        self.__FORM = form()
 
     def get(self) -> object:
         """."""
-        return render_template("client/create.html", form=self.__FORM)
+        response = self.__CONTROLLER.handle(
+            HttpRequest(method=HTTPMethod.GET, body=None)
+        )
+        return render_template("client/create.html", form=response.body.form)
 
     def post(self) -> object:
         """."""
-        response = self.__CONTROLLER.handle(self.__FORM)
-        if response is None:
+        response = self.__CONTROLLER.handle(
+            HttpRequest(method=HTTPMethod.POST, body=None)
+        )
+        if response.body.exception is None:
             flash("Cliente cadastrado com sucesso")
             return redirect(url_for("client.index"))
-        for error in response.args:
+        for error in response.body.exception.args:
             flash(error, "error")
-        return render_template("client/create.html", form=self.__FORM)
+        return render_template("client/create.html", form=response.body.form)

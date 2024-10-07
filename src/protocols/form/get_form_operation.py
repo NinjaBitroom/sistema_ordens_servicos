@@ -3,9 +3,9 @@
 from abc import ABC, abstractmethod
 
 
-class Validation[T](ABC):
+class GetFormOperation[TIn, TOut](ABC):
     """."""
 
     @abstractmethod
-    def validate(self, data: T) -> None | Exception:
+    def get_form(self, from_: TIn) -> TOut:
         """."""
