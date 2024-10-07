@@ -14,8 +14,6 @@ from src.protocols.http.http_request import HttpRequest
 class ClientIndexView(MethodView):
     """."""
 
-    methods = ("GET",)
-
     def __init__(
         self, controller: Controller[None, Sequence[Any] | Exception]
     ) -> None:

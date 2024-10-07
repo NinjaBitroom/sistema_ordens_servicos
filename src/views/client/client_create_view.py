@@ -13,8 +13,6 @@ from src.protocols.http.http_request import HttpRequest
 class ClientCreateView(MethodView):
     """."""
 
-    methods = "GET", "POST"
-
     def __init__(
         self, controller: Controller[None, ClientCreateResponse]
     ) -> None:
