@@ -30,10 +30,11 @@ class ClientCreateController(Controller[None, ClientCreateResponse]):
         self, request: HttpRequest[None]
     ) -> HttpResponse[ClientCreateResponse]:
         """."""
-        _ = request
+        exception = None
         form = self.__GET_FORM_OPERATION.get_form(ClienteForm)
-        exception = self.__VALIDATION.validate(form)
-        if exception is None:
-            self.__DB_ADD_ONE_OPERATION.add_one(form.data)
+        if request.method == "POST":
+            exception = self.__VALIDATION.validate(form)
+            if exception is None:
+                self.__DB_ADD_ONE_OPERATION.add_one(form.data)
         response = ClientCreateResponse(form=form, exception=exception)
         return HttpResponse(body=response, status_code=HTTPStatus.OK)
