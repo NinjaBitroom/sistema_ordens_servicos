@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.7.0 (2024-10-07)
+
+### Feat
+
+- add suppliers creation and visualization
+- add route for suppliers
+
 ## 0.6.0 (2024-10-07)
 
 ### Feat

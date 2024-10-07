@@ -2,7 +2,7 @@
 
 [project]
 name = "sistema_ordens_servicos"
-version = "0.6.0"
+version = "0.7.0"
 description = "SISTEMA DE ORDENS DE SERVIÇOS"
 authors = [
     {name = "Gabriel Bitencourt Marin", email = "gabrielbitercourt@gmail.com"},
