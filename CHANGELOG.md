@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.0 (2024-10-07)
+
+### Feat
+
+- add SupplierIndexView
+- add SupplierListController
+- add extra verification on ClientCreateController
+
+### Refactor
+
+- move client controllers to a folder
+- improve general type hints
+- improve models type hints
+- move app configuration to a function
+- remove manual method definitions on views
+- inject form into controller
+
 ## 0.5.0 (2024-10-06)
 
 ### Feat
