@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.0 (2024-10-08)
+
+### Feat
+
+- add client selection on service ordem form
+- create InjectChoicesOperation
+- add 'other' to genders
+
 ## 0.8.0 (2024-10-08)
 
 ### Feat
