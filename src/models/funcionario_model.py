@@ -2,12 +2,12 @@
 
 from datetime import date, datetime
 
-from sqlalchemy import String
+from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column
 
-from models.cargo_funcionario_model import CargoFuncionarioModel
 from src.models.base.endereco_model import EnderecoModel
 from src.models.base.telefones_model import TelefonesModel
+from src.models.cargo_funcionario_model import CargoFuncionarioModel
 
 
 class FuncionarioModel(EnderecoModel, TelefonesModel):
@@ -20,7 +20,7 @@ class FuncionarioModel(EnderecoModel, TelefonesModel):
     nascimento: Mapped[date | None]
     cpf: Mapped[str | None]
     email: Mapped[str | None]
-    cargo: Mapped[CargoFuncionarioModel]
+    cargo_id: Mapped[int] = mapped_column(ForeignKey(CargoFuncionarioModel.id))
     data_de_cadastro: Mapped[datetime | None] = mapped_column(
         default_factory=datetime.now
     )

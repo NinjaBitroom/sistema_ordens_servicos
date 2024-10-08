@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+  Gerenciar OS
+{% endblock title %}
+{% block content %}
+  <h1>Gerenciar Ordens de Serviço</h1>
+  <a href="{{ url_for('service_order.create') }}" role="button">Cadastrar OS</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Descrição</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for service in services %}
+        <tr>
+          <td>{{ service.id }}</td>
+          <td>{{ service.descricao_do_problema }}</td>
+          <td>
+            <a href="#" role="button">Visualizar</a>
+            <a href="#" role="button">Editar</a>
+            <a href="#" role="button">Excluir</a>
+          </td>
+        </tr>
+      {% else %}
+        Não há OS cadastrados.
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

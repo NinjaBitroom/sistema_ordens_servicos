@@ -2,8 +2,8 @@
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from services.database import DB
 from src.services.base_model import BaseModel
+from src.services.database import DB
 
 
 class CargoFuncionarioModel(DB.Model, BaseModel):
