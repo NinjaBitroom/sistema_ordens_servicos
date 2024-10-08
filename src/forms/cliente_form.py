@@ -21,7 +21,7 @@ class ClienteForm(EnderecoForm, TelefonesForm):
     nome = StringField("Nome", validators=[DataRequired()])
     sexo = SelectField(
         "Gênero",
-        choices=[("M", "Masculino"), ("F", "Feminino")],
+        choices=[("M", "Masculino"), ("F", "Feminino"), ("O", "Outro")],
         validators=[DataRequired()],
     )
     nascimento = DateField("Data de Nascimento", validators=[DataRequired()])
