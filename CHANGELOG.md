@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0 (2024-10-08)
+
+### Feat
+
+- add service order creation and visualization
+
 ## 0.7.0 (2024-10-07)
 
 ### Feat
