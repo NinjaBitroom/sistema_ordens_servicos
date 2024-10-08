@@ -21,9 +21,7 @@ class SupplierCreateController(
         self,
         validation: Validation[FornecedorForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[
-            type[FornecedorForm], FornecedorForm
-        ],
+        get_form_operation: GetFormOperation[FornecedorForm],
     ) -> None:
         """."""
         self.__VALIDATION = validation
@@ -35,7 +33,7 @@ class SupplierCreateController(
     ) -> HttpResponse[FormCreateResponse[FornecedorForm]]:
         """."""
         exception = None
-        form = self.__GET_FORM_OPERATION.get_form(FornecedorForm)
+        form = self.__GET_FORM_OPERATION.get_form()
         if request.method == "POST":
             exception = self.__VALIDATION.validate(form)
             if exception is None:

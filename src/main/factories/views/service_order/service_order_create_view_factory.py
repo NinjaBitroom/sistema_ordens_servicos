@@ -20,8 +20,8 @@ def make_service_order_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation[OrdemServicoForm]()
     data_access_object = FlaskSqlAlchemyOperations(OrdemServicoModel, DB)
-    form_access_object = FlaskWtfOperations[OrdemServicoForm]()
+    form_access_object = FlaskWtfOperations(OrdemServicoForm)
     controller = ServiceOrderCreateController(
-        validation, data_access_object, form_access_object
+        validation, data_access_object, form_access_object, form_access_object
     )
     return ServiceOrderCreateView.as_view("create", controller)

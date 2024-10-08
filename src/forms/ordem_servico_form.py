@@ -8,8 +8,9 @@ from wtforms import (
     DateTimeLocalField,
     FloatField,
     IntegerField,
-    StringField,
+    SelectField,
     SubmitField,
+    TextAreaField,
 )
 from wtforms.validators import DataRequired
 
@@ -18,8 +19,8 @@ class OrdemServicoForm(FlaskForm):
     """."""
 
     tecnico_id = IntegerField("Técnico", validators=[DataRequired()])
-    cliente_id = IntegerField("Cliente", validators=[DataRequired()])
-    descricao_do_problema = StringField(
+    cliente_id = SelectField("Cliente", validators=[DataRequired()])
+    descricao_do_problema = TextAreaField(
         "Descrição do Problema", validators=[DataRequired()]
     )
     data_ = DateTimeLocalField(

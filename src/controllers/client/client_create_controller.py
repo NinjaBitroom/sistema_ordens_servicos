@@ -21,7 +21,7 @@ class ClientCreateController(
         self,
         validation: Validation[ClienteForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[type[ClienteForm], ClienteForm],
+        get_form_operation: GetFormOperation[ClienteForm],
     ) -> None:
         """."""
         self.__VALIDATION = validation
@@ -33,7 +33,7 @@ class ClientCreateController(
     ) -> HttpResponse[FormCreateResponse[ClienteForm]]:
         """."""
         exception = None
-        form = self.__GET_FORM_OPERATION.get_form(ClienteForm)
+        form = self.__GET_FORM_OPERATION.get_form()
         if request.method == "POST":
             exception = self.__VALIDATION.validate(form)
             if exception is None:
