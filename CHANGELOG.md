@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.10.0 (2024-10-09)
+
+### Feat
+
+- add open/close service order button
+- add open status to service_order
+- change buttons design
+- add Bootstrap Icons
+
+### Refactor
+
+- rename many forms and models
+
 ## 0.9.0 (2024-10-08)
 
 ### Feat
