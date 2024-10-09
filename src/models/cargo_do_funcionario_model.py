@@ -6,7 +6,7 @@ from src.services.base_model import BaseModel
 from src.services.database import DB
 
 
-class CargoFuncionarioModel(DB.Model, BaseModel):
+class CargoDoFuncionarioModel(DB.Model, BaseModel):
     """."""
 
     __tablename__ = "Cargos dos funcionários"

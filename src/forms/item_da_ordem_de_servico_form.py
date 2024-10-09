@@ -5,7 +5,7 @@ from wtforms import StringField
 from wtforms.validators import DataRequired
 
 
-class ItemOrdemServicoForm(FlaskForm):
+class ItemDaOrdemDeServicoForm(FlaskForm):
     """."""
 
     produto = StringField("Produto", validators=[DataRequired()])

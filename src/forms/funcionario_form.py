@@ -3,8 +3,8 @@
 from wtforms import DateField, EmailField, StringField
 from wtforms.validators import DataRequired
 
-from src.forms.endereco_form import EnderecoForm
-from src.forms.telefones_form import TelefonesForm
+from src.forms.base.endereco_form import EnderecoForm
+from src.forms.base.telefones_form import TelefonesForm
 
 
 class FuncionarioForm(EnderecoForm, TelefonesForm):

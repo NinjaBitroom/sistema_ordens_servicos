@@ -1,6 +1,6 @@
 """."""
 
-from datetime import datetime
+from datetime import date
 
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -16,6 +16,6 @@ class FornecedorModel(EnderecoModel, TelefonesModel):
     nome: Mapped[str]
     cnpj: Mapped[str]
     email: Mapped[str | None]
-    data_de_cadastro: Mapped[datetime | None] = mapped_column(
-        default_factory=datetime.now
+    data_de_cadastro_no_sistema: Mapped[date | None] = mapped_column(
+        default_factory=date.today
     )

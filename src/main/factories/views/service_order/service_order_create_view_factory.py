@@ -5,9 +5,9 @@ from flask.typing import RouteCallable
 from src.controllers.service_order.service_order_create_controller import (
     ServiceOrderCreateController,
 )
-from src.forms.ordem_servico_form import OrdemServicoForm
+from src.forms.ordem_de_servico_form import OrdemDeServicoForm
 from src.models.cliente_model import ClienteModel
-from src.models.ordem_servico_model import OrdemServicoModel
+from src.models.ordem_de_servico_model import OrdemDeServicoModel
 from src.services.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_operations import FlaskWtfOperations
@@ -19,11 +19,11 @@ from src.views.service_order.service_order_create_view import (
 
 def make_service_order_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[OrdemServicoForm]()
+    validation = FlaskWtfValidation[OrdemDeServicoForm]()
     service_order_data_access_object = FlaskSqlAlchemyOperations(
-        OrdemServicoModel, DB
+        OrdemDeServicoModel, DB
     )
-    form_access_object = FlaskWtfOperations(OrdemServicoForm)
+    form_access_object = FlaskWtfOperations(OrdemDeServicoForm)
     client_data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
     controller = ServiceOrderCreateController(
         validation,

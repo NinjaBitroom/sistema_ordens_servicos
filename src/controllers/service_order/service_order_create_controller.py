@@ -2,7 +2,7 @@
 
 from http import HTTPStatus
 
-from src.forms.ordem_servico_form import OrdemServicoForm
+from src.forms.ordem_de_servico_form import OrdemDeServicoForm
 from src.models.cliente_model import ClienteModel
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
@@ -17,17 +17,17 @@ from src.protocols.validaton import Validation
 
 
 class ServiceOrderCreateController(
-    Controller[None, FormCreateResponse[OrdemServicoForm]]
+    Controller[None, FormCreateResponse[OrdemDeServicoForm]]
 ):
     """."""
 
     def __init__(
         self,
-        validation: Validation[OrdemServicoForm],
+        validation: Validation[OrdemDeServicoForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[OrdemServicoForm],
+        get_form_operation: GetFormOperation[OrdemDeServicoForm],
         inject_choices_operation: InjectChoicesOperation[
-            tuple[int, str], OrdemServicoForm
+            tuple[int, str], OrdemDeServicoForm
         ],
         db_get_all_operation: DbGetAllOperation[ClienteModel],
     ) -> None:
@@ -40,7 +40,7 @@ class ServiceOrderCreateController(
 
     def handle(
         self, request: HttpRequest[None]
-    ) -> HttpResponse[FormCreateResponse[OrdemServicoForm]]:
+    ) -> HttpResponse[FormCreateResponse[OrdemDeServicoForm]]:
         """."""
         exception = None
         form = self.__GET_FORM_OPERATION.get_form()

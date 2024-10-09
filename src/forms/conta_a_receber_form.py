@@ -5,7 +5,7 @@ from wtforms import FloatField, StringField
 from wtforms.validators import DataRequired
 
 
-class ContaReceberForm(FlaskForm):
+class ContaAReceberForm(FlaskForm):
     """."""
 
     ordem_de_servico = StringField(

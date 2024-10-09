@@ -7,7 +7,7 @@ from services.database import DB
 from src.services.base_model import BaseModel
 
 
-class ItemOrdemServicoModel(DB.Model, BaseModel):
+class ItemDaOrdemDeServicoModel(DB.Model, BaseModel):
     """."""
 
     __tablename__ = "Itens da ordem de serviço"

@@ -1,6 +1,6 @@
 """."""
 
-from datetime import datetime
+from datetime import date
 
 from wtforms import (
     DateField,
@@ -11,8 +11,8 @@ from wtforms import (
 )
 from wtforms.validators import DataRequired
 
-from src.forms.endereco_form import EnderecoForm
-from src.forms.telefones_form import TelefonesForm
+from src.forms.base.endereco_form import EnderecoForm
+from src.forms.base.telefones_form import TelefonesForm
 
 
 class ClienteForm(EnderecoForm, TelefonesForm):
@@ -27,7 +27,7 @@ class ClienteForm(EnderecoForm, TelefonesForm):
     nascimento = DateField("Data de Nascimento", validators=[DataRequired()])
     cpf = StringField("CPF", validators=[DataRequired()])
     data_de_cadastro = DateField(
-        "Data de Cadastro", validators=[DataRequired()], default=datetime.now
+        "Data de Cadastro", validators=[DataRequired()], default=date.today
     )
     email = EmailField("E-mail", validators=[DataRequired()])
     submit = SubmitField("Salvar")

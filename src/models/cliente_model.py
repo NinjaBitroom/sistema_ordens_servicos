@@ -1,6 +1,6 @@
 """."""
 
-from datetime import date, datetime
+from datetime import date
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
@@ -18,7 +18,7 @@ class ClienteModel(EnderecoModel, TelefonesModel):
     sexo: Mapped[str | None] = mapped_column(String(1))
     nascimento: Mapped[date | None]
     cpf: Mapped[str | None]
-    data_de_cadastro: Mapped[datetime | None] = mapped_column(
-        default_factory=datetime.now
+    data_de_cadastro: Mapped[date | None] = mapped_column(
+        default_factory=date.today
     )
     email: Mapped[str | None] = mapped_column(default=None)

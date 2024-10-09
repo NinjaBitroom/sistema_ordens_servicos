@@ -11,7 +11,7 @@ from src.services.base_model import BaseModel
 from src.services.database import DB
 
 
-class OrdemServicoModel(DB.Model, BaseModel):
+class OrdemDeServicoModel(DB.Model, BaseModel):
     """."""
 
     __tablename__ = "Ordens de serviço"
@@ -19,5 +19,5 @@ class OrdemServicoModel(DB.Model, BaseModel):
     tecnico_id: Mapped[int] = mapped_column(ForeignKey(FuncionarioModel.id))
     cliente_id: Mapped[int] = mapped_column(ForeignKey(ClienteModel.id))
     descricao_do_problema: Mapped[str]
-    data_: Mapped[date]
     valor_total_da_ordem: Mapped[float]
+    data_: Mapped[date] = mapped_column(default_factory=date.today)
