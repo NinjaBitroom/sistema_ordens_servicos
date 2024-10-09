@@ -8,11 +8,17 @@ from flask_sqlalchemy import SQLAlchemy
 
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.db.db_get_all_operation import DbGetAllOperation
+from src.protocols.db.db_get_one_operation import DbGetOneOperation
+from src.protocols.db.db_update_operation import DbUpdateOperation
+from src.protocols.db.update_data import UpdateData
 from src.services.base_model import BaseModel
 
 
 class FlaskSqlAlchemyOperations[T: BaseModel](
-    DbAddOneOperation, DbGetAllOperation[T]
+    DbAddOneOperation,
+    DbGetAllOperation[T],
+    DbGetOneOperation[T],
+    DbUpdateOperation[T],
 ):
     """."""
 
@@ -34,3 +40,13 @@ class FlaskSqlAlchemyOperations[T: BaseModel](
     def get_all(self) -> list[T]:
         """."""
         return self.__DB.session.query(self.__MODEL).all()
+
+    def get_one(self, data: Mapping[Any, Any]) -> T:
+        """."""
+        return self.__DB.session.query(self.__MODEL).filter_by(**data).one()
+
+    def update(self, data: UpdateData[T]) -> None:
+        """."""
+        for key, value in data.data.items():
+            setattr(data.object, key, value)
+        self.__DB.session.commit()
