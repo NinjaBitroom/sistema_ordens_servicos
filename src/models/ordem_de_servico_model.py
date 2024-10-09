@@ -21,3 +21,4 @@ class OrdemDeServicoModel(DB.Model, BaseModel):
     descricao_do_problema: Mapped[str]
     valor_total_da_ordem: Mapped[float]
     data_: Mapped[date] = mapped_column(default_factory=date.today)
+    aberto: Mapped[bool] = mapped_column(default=True)

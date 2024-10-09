@@ -19,7 +19,13 @@
         <tr>
           <td>{{ service.id }}</td>
           <td>{{ service.descricao_do_problema }}</td>
-          <td>Aberto</td>
+          <td>
+            {% if service.aberto %}
+              Aberto
+            {% else %}
+              Fechado
+            {% endif %}
+          </td>
           <td>
             <a href="#"
                role="button"
@@ -33,6 +39,7 @@
                role="button"
                data-tooltip="Excluir"
                class="pico-background-red-500"><i class="bi bi-trash-fill"></i></a>
+            <a href="#" role="button">Fechar</a>
           </td>
         </tr>
       {% else %}
