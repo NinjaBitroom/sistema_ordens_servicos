@@ -22,3 +22,7 @@ class ClienteModel(EnderecoModel, TelefonesModel):
         default_factory=date.today
     )
     email: Mapped[str | None] = mapped_column(default=None)
+
+    def __repr__(self) -> str:
+        """."""
+        return self.nome

@@ -6,7 +6,6 @@ from src.controllers.service_order.service_order_create_controller import (
     ServiceOrderCreateController,
 )
 from src.forms.ordem_de_servico_form import OrdemDeServicoForm
-from src.models.cliente_model import ClienteModel
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
 from src.services.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
@@ -24,12 +23,9 @@ def make_service_order_create_view() -> RouteCallable:
         OrdemDeServicoModel, DB
     )
     form_access_object = FlaskWtfOperations(OrdemDeServicoForm)
-    client_data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
     controller = ServiceOrderCreateController(
         validation,
         service_order_data_access_object,
         form_access_object,
-        form_access_object,
-        client_data_access_object,
     )
     return ServiceOrderCreateView.as_view("create", controller)
