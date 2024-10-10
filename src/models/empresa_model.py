@@ -19,3 +19,11 @@ class EmpresaModel(EnderecoModel, TelefonesModel):
     data_de_cadastro_no_sistema: Mapped[date | None] = mapped_column(
         default_factory=date.today
     )
+
+    def __repr__(self) -> str:
+        """."""
+        return self.nome
+
+    def __str__(self) -> str:
+        """."""
+        return self.nome

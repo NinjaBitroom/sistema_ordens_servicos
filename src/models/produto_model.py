@@ -16,3 +16,11 @@ class ProdutoModel(DB.Model, BaseModel):
     valor_venda: Mapped[float]
     quantidade_em_estoque: Mapped[int]
     marca: Mapped[MarcaModel]
+
+    def __repr__(self) -> str:
+        """."""
+        return self.nome
+
+    def __str__(self) -> str:
+        """."""
+        return self.nome

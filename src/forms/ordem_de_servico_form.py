@@ -11,4 +11,10 @@ OrdemDeServicoForm = model_form(
     base_class=FlaskForm,
     db_session=DB.session,
     exclude=["aberto"],
+    field_args={
+        "tecnico": {"label": "Técnico"},
+        "descricao_do_problema": {"label": "Descrição do Problema"},
+        "valor_total_da_ordem": {"label": "Valor Total"},
+        "data_": {"label": "Data"},
+    },
 )

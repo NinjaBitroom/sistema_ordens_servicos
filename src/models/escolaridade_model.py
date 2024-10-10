@@ -12,3 +12,11 @@ class EscolaridadeModel(DB.Model, BaseModel):
     __tablename__ = "Escolaridades"
     id: Mapped[int] = mapped_column(init=False, primary_key=True)
     nome: Mapped[str]
+
+    def __repr__(self) -> str:
+        """."""
+        return self.nome
+
+    def __str__(self) -> str:
+        """."""
+        return self.nome
