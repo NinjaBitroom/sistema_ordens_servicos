@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.11.0 (2024-10-10)
+
+### Feat
+
+- change reopen button color
+- add employees
+
+### Refactor
+
+- improve forms
+- change forms to use model_form function
+- add wtforms-sqlalchemy
+
 ## 0.10.0 (2024-10-09)
 
 ### Feat
