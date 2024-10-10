@@ -2,6 +2,8 @@
 
 from http import HTTPStatus
 
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+
 from src.forms.fornecedor_form import FornecedorForm
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
@@ -19,9 +21,9 @@ class SupplierCreateController(
 
     def __init__(
         self,
-        validation: Validation[FornecedorForm],
+        validation: Validation[FlaskForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[FornecedorForm],
+        get_form_operation: GetFormOperation[FlaskForm],
     ) -> None:
         """."""
         self.__VALIDATION = validation
@@ -30,7 +32,7 @@ class SupplierCreateController(
 
     def handle(
         self, request: HttpRequest[None]
-    ) -> HttpResponse[FormCreateResponse[FornecedorForm]]:
+    ) -> HttpResponse[FormCreateResponse[FlaskForm]]:
         """."""
         exception = None
         form = self.__GET_FORM_OPERATION.get_form()

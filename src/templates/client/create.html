@@ -3,31 +3,7 @@
   <a href="{{ url_for('client.index') }}">Voltar</a>
   <h1>Cadastrar Cliente</h1>
   <form action="{{ url_for('client.create') }}" method="post">
-    {{ form.csrf_token }}
-    {{ form.nome.label }}
-    {{ form.nome }}
-    {{ form.sexo.label }}
-    {{ form.sexo }}
-    {{ form.nascimento.label }}
-    {{ form.nascimento }}
-    {{ form.cpf.label }}
-    {{ form.cpf }}
-    {{ form.data_de_cadastro.label }}
-    {{ form.data_de_cadastro }}
-    {{ form.email.label }}
-    {{ form.email }}
-    {{ form.endereco_rua.label }}
-    {{ form.endereco_rua }}
-    {{ form.endereco_numero.label }}
-    {{ form.endereco_numero }}
-    {{ form.endereco_bairro.label }}
-    {{ form.endereco_bairro }}
-    {{ form.endereco_cep.label }}
-    {{ form.endereco_cep }}
-    {{ form.telefone_fixo.label }}
-    {{ form.telefone_fixo }}
-    {{ form.telefone_celular.label }}
-    {{ form.telefone_celular }}
-    {{ form.submit }}
+    {% for field in form %}{{ field.label }} {{ field }}{% endfor %}
+    <button type="submit">Cadastrar</button>
   </form>
 {% endblock content %}

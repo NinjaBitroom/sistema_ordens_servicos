@@ -4,8 +4,8 @@ from http import HTTPMethod
 
 from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
-from src.forms.fornecedor_form import FornecedorForm
 from src.protocols.controller import Controller
 from src.protocols.form.form_create_response import FormCreateResponse
 from src.protocols.http.http_request import HttpRequest
@@ -15,7 +15,7 @@ class SupplierCreateView(MethodView):
     """."""
 
     def __init__(
-        self, controller: Controller[None, FormCreateResponse[FornecedorForm]]
+        self, controller: Controller[None, FormCreateResponse[FlaskForm]]
     ) -> None:
         """."""
         self.__CONTROLLER = controller

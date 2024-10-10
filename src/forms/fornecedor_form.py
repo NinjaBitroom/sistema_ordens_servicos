@@ -1,21 +1,13 @@
 """."""
 
-from datetime import date
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
 
-from wtforms import DateField, EmailField, StringField, SubmitField
-from wtforms.validators import DataRequired
+from src.models.fornecedor_model import FornecedorModel
+from src.services.database import DB
 
-from src.forms.base.endereco_form import EnderecoForm
-from src.forms.base.telefones_form import TelefonesForm
-
-
-class FornecedorForm(EnderecoForm, TelefonesForm):
-    """."""
-
-    nome = StringField("Nome", validators=[DataRequired()])
-    cnpj = StringField("CNPJ", validators=[DataRequired()])
-    email = EmailField("E-mail", validators=[DataRequired()])
-    data_de_cadastro_no_sistema = DateField(
-        "Data de Cadastro", validators=[DataRequired()], default=date.today
-    )
-    submit = SubmitField("Salvar")
+FornecedorForm = model_form(
+    FornecedorModel,
+    base_class=FlaskForm,
+    db_session=DB.session,
+)
