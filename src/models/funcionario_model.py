@@ -1,9 +1,9 @@
 """."""
 
-from datetime import date, datetime
+from datetime import date
 
 from sqlalchemy import ForeignKey, String
-from sqlalchemy.orm import Mapped, mapped_column
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from src.models.base.endereco_model import EnderecoModel
 from src.models.base.telefones_model import TelefonesModel
@@ -23,6 +23,7 @@ class FuncionarioModel(EnderecoModel, TelefonesModel):
     cargo_id: Mapped[int] = mapped_column(
         ForeignKey(CargoDoFuncionarioModel.id)
     )
-    data_de_cadastro: Mapped[datetime | None] = mapped_column(
-        default_factory=datetime.now
+    cargo: Mapped[CargoDoFuncionarioModel] = relationship(default=None)
+    data_de_cadastro: Mapped[date | None] = mapped_column(
+        default_factory=date.today
     )

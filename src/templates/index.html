@@ -7,4 +7,11 @@
   <a href="{{ url_for('supplier.index') }}" role="button"><i class="bi bi-building-fill"></i>Fornecedores</a>
   <a href="{{ url_for('client.index') }}" role="button"><i class="bi bi-person-fill"></i>Clientes</a>
   <a href="{{ url_for('service_order.index') }}" role="button">Ordens de Serviços</a>
+  <hr>
+  <a href="{{ url_for('employee.index') }}"
+     role="button"
+     class="secondary"><i class="bi bi-person-fill"></i>Funcionários</a>
+  <a href="{{ url_for('employee_position.index') }}"
+     role="button"
+     class="secondary">Cargos</a>
 {% endblock content %}

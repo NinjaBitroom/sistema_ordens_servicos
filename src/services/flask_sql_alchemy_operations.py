@@ -33,6 +33,10 @@ class FlaskSqlAlchemyOperations[T: BaseModel](
         for field in fields(self.__MODEL):
             if field.name not in data:
                 continue
+            if data[field.name] is None:
+                continue
+            if isinstance(data[field.name], BaseModel):
+                cleaned_data[f"{field.name}_id"] = data[field.name].id
             cleaned_data[field.name] = data[field.name]
         self.__DB.session.add(self.__MODEL(**cleaned_data))
         self.__DB.session.commit()
