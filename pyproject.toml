@@ -22,7 +22,7 @@ main = ["pdm"]
 [tool.pyprojectx.aliases]
 install = "pdm install"
 run = "pdm run"
-start = "@run flask run"
+start = "pdm start"
 
 [tool.pdm]
 distribution = false
@@ -40,6 +40,7 @@ commit = [
 
 [tool.pdm.scripts]
 post_install = "pre-commit install"
+start = "flask run"
 
 [tool.pyright]
 typeCheckingMode = "strict"
