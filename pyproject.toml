@@ -25,9 +25,10 @@ license = {text = "MIT"}
 main = ["pdm"]
 
 [tool.pyprojectx.aliases]
-install = "pdm install"
-run = "pdm run"
-start = "pdm start"
+install = "@pdm install"
+run = "@pdm run"
+start = "@pdm start"
+update = ["@pdm update", "@run pre-commit autoupdate"]
 
 [tool.pdm]
 distribution = false
