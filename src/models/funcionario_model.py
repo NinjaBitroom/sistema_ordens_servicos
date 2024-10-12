@@ -2,8 +2,9 @@
 
 from datetime import date
 
-from sqlalchemy import ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from pydantic import EmailStr, NonNegativeInt, PastDate
+from sqlalchemy import Date
+from sqlmodel import Field, Relationship  # type: ignore  # noqa: PGH003
 
 from src.models.base.endereco_model import EnderecoModel
 from src.models.base.telefones_model import TelefonesModel
@@ -11,23 +12,19 @@ from src.models.cargo_do_funcionario_model import CargoDoFuncionarioModel
 from src.protocols.genders import Genders
 
 
-class FuncionarioModel(EnderecoModel, TelefonesModel):
+class FuncionarioModel(EnderecoModel, TelefonesModel, table=True):
     """."""
 
-    __tablename__ = "Funcionários"
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    nome: Mapped[str]
-    sexo: Mapped[Genders | None] = mapped_column()
-    nascimento: Mapped[date | None]
-    cpf: Mapped[str | None]
-    email: Mapped[str | None]
-    cargo_id: Mapped[int] = mapped_column(
-        ForeignKey(CargoDoFuncionarioModel.id)
-    )
-    cargo: Mapped[CargoDoFuncionarioModel] = relationship(default=None)
-    data_de_cadastro: Mapped[date | None] = mapped_column(
-        default_factory=date.today
-    )
+    __tablename__ = "Funcionários"  # type: ignore  # noqa: PGH003
+    id: NonNegativeInt | None = Field(default=None, primary_key=True)
+    nome: str
+    sexo: Genders | None = Field()
+    nascimento: PastDate | None = Field(sa_type=Date)
+    cpf: str | None
+    email: EmailStr | None
+    cargo_id: int | None = Field(foreign_key="Cargos dos funcionários.id")
+    cargo: CargoDoFuncionarioModel | None = Relationship()
+    data_de_cadastro: date | None = Field(default_factory=date.today)
 
     def __repr__(self) -> str:
         """."""

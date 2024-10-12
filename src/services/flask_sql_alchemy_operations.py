@@ -1,20 +1,19 @@
 """."""
 
 from collections.abc import Mapping
-from dataclasses import fields
 from typing import Any
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlmodel import SQLModel
 
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.db.db_get_all_operation import DbGetAllOperation
 from src.protocols.db.db_get_one_operation import DbGetOneOperation
 from src.protocols.db.db_update_operation import DbUpdateOperation
 from src.protocols.db.update_data import UpdateData
-from src.services.base_model import BaseModel
 
 
-class FlaskSqlAlchemyOperations[T: BaseModel](
+class FlaskSqlAlchemyOperations[T: SQLModel](
     DbAddOneOperation,
     DbGetAllOperation[T],
     DbGetOneOperation[T],
@@ -30,14 +29,12 @@ class FlaskSqlAlchemyOperations[T: BaseModel](
     def add_one(self, data: Mapping[str, Any]) -> None:
         """."""
         cleaned_data = {}
-        for field in fields(self.__MODEL):
-            if field.name not in data:
+        for field in self.__MODEL.model_fields:
+            if data.get(field) is None:
                 continue
-            if data[field.name] is None:
-                continue
-            if isinstance(data[field.name], BaseModel):
-                cleaned_data[f"{field.name}_id"] = data[field.name].id
-            cleaned_data[field.name] = data[field.name]
+            if isinstance(data[field], SQLModel):
+                cleaned_data[f"{field}_id"] = data[field].id
+            cleaned_data[field] = data[field]
         self.__DB.session.add(self.__MODEL(**cleaned_data))
         self.__DB.session.commit()
 

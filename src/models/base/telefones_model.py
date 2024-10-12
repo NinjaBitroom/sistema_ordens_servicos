@@ -1,14 +1,12 @@
 """."""
 
-from sqlalchemy.orm import Mapped
+from pydantic_extra_types.phone_numbers import PhoneNumber
 
-from src.services.base_model import BaseModel
 from src.services.database import DB
 
 
-class TelefonesModel(DB.Model, BaseModel):
+class TelefonesModel(DB.Model):
     """."""
 
-    __abstract__ = True
-    telefone_fixo: Mapped[str | None]
-    telefone_celular: Mapped[str | None]
+    telefone_fixo: PhoneNumber | None
+    telefone_celular: PhoneNumber | None

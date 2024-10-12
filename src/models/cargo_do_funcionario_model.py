@@ -1,17 +1,17 @@
 """."""
 
-from sqlalchemy.orm import Mapped, mapped_column
+from pydantic import NonNegativeInt
+from sqlmodel import Field  # type: ignore  # noqa: PGH003
 
-from src.services.base_model import BaseModel
 from src.services.database import DB
 
 
-class CargoDoFuncionarioModel(DB.Model, BaseModel):
+class CargoDoFuncionarioModel(DB.Model, table=True):
     """."""
 
-    __tablename__ = "Cargos dos funcionários"
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    nome: Mapped[str]
+    __tablename__ = "Cargos dos funcionários"  # type: ignore  # noqa: PGH003
+    id: NonNegativeInt | None = Field(default=None, primary_key=True)
+    nome: str
 
     def __repr__(self) -> str:
         """."""

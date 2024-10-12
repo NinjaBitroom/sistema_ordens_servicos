@@ -1,7 +1,17 @@
 """."""
 
 from flask_sqlalchemy import SQLAlchemy
+from sqlmodel import SQLModel
 
-from src.services.base_model import BaseModel
+from src.services.base_session import BaseSession
 
-DB = SQLAlchemy(model_class=BaseModel)
+
+class CustomSQLAlchemy(SQLAlchemy):
+    """."""
+
+    Model: type[SQLModel]
+
+
+DB = CustomSQLAlchemy(
+    model_class=SQLModel, session_options={"class_": BaseSession}
+)

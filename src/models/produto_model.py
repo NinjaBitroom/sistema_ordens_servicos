@@ -1,21 +1,27 @@
 """."""
 
-from sqlalchemy.orm import Mapped, mapped_column
+from pydantic import NonNegativeInt
+from sqlmodel import (
+    Field,  # type: ignore  # noqa: PGH003
+    Relationship,
+)
 
 from models.marca_model import MarcaModel
 from services.database import DB
-from src.services.base_model import BaseModel
 
 
-class ProdutoModel(DB.Model, BaseModel):
+class ProdutoModel(DB.Model, table=True):
     """."""
 
-    __tablename__ = "Produtos"
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    nome: Mapped[str]
-    valor_venda: Mapped[float]
-    quantidade_em_estoque: Mapped[int]
-    marca: Mapped[MarcaModel]
+    __tablename__ = "Produtos"  # type: ignore  # noqa: PGH003
+    id: NonNegativeInt | None = Field(default=None, primary_key=True)
+    nome: str
+    valor_venda: float
+    quantidade_em_estoque: NonNegativeInt
+    marca_id: NonNegativeInt | None = Field(
+        default=None, foreign_key=MarcaModel.id
+    )
+    marca: MarcaModel | None = Relationship()
 
     def __repr__(self) -> str:
         """."""

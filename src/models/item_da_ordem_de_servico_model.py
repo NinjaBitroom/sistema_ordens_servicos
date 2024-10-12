@@ -1,17 +1,21 @@
 """."""
 
-from sqlalchemy.orm import Mapped, mapped_column
+from pydantic import NonNegativeInt
+from sqlmodel import (
+    Field,  # type: ignore  # noqa: PGH003
+    Relationship,
+)
 
 from models.produto_model import ProdutoModel
 from services.database import DB
-from src.services.base_model import BaseModel
 
 
-class ItemDaOrdemDeServicoModel(DB.Model, BaseModel):
+class ItemDaOrdemDeServicoModel(DB.Model, table=True):
     """."""
 
-    __tablename__ = "Itens da ordem de serviço"
-    id: Mapped[int] = mapped_column(init=False, primary_key=True)
-    produto: Mapped[ProdutoModel]
-    quantidade: Mapped[int]
-    valor_total_do_item: Mapped[float]
+    __tablename__ = "Itens da ordem de serviço"  # type: ignore  # noqa: PGH003
+    id: NonNegativeInt | None = Field(default=None, primary_key=True)
+    produto_id: NonNegativeInt | None = Field(foreign_key=ProdutoModel.id)
+    produto: ProdutoModel | None = Relationship()
+    quantidade: NonNegativeInt
+    valor_total_do_item: float
