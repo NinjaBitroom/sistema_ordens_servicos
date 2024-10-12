@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.11.1 (2024-10-12)
+
+### Refactor
+
+- add SQLModel
+
 ## 0.11.0 (2024-10-10)
 
 ### Feat
