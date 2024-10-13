@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.0 (2024-10-13)
+
+### Feat
+
+- add Flask-Alembic
+
+### Refactor
+
+- reconfigure alembic hooks and app models
+
 ## 0.11.1 (2024-10-12)
 
 ### Refactor
