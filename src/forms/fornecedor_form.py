@@ -4,7 +4,7 @@ from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
 
 from src.models.fornecedor_model import FornecedorModel
-from src.services.database import DB
+from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
 FornecedorForm = model_form(

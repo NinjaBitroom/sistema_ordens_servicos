@@ -7,7 +7,7 @@ from sqlmodel import (
 )
 
 from models.marca_model import MarcaModel
-from services.database import DB
+from src.services.extensions.database import DB
 
 
 class ProdutoModel(DB.Model, table=True):

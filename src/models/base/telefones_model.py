@@ -2,7 +2,7 @@
 
 from pydantic_extra_types.phone_numbers import PhoneNumber
 
-from src.services.database import DB
+from src.services.extensions.database import DB
 
 
 class TelefonesModel(DB.Model):

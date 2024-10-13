@@ -6,8 +6,8 @@ from sqlmodel import (
     Relationship,
 )
 
-from services.database import DB
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
+from src.services.extensions.database import DB
 
 
 class ContaAReceberModel(DB.Model, table=True):

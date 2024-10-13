@@ -7,7 +7,7 @@ from sqlmodel import (
 )
 
 from models.produto_model import ProdutoModel
-from services.database import DB
+from src.services.extensions.database import DB
 
 
 class ItemDaOrdemDeServicoModel(DB.Model, table=True):

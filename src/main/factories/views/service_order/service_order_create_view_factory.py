@@ -7,7 +7,7 @@ from src.controllers.service_order.service_order_create_controller import (
 )
 from src.forms.ordem_de_servico_form import OrdemDeServicoForm
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
-from src.services.database import DB
+from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_operations import FlaskWtfOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation

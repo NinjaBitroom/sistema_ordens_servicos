@@ -1,6 +1,6 @@
 """."""
 
-from src.services.database import DB
+from src.services.extensions.database import DB
 
 
 class EnderecoModel(DB.Model):

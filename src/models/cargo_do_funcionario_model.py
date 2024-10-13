@@ -3,7 +3,7 @@
 from pydantic import NonNegativeInt
 from sqlmodel import Field  # type: ignore  # noqa: PGH003
 
-from src.services.database import DB
+from src.services.extensions.database import DB
 
 
 class CargoDoFuncionarioModel(DB.Model, table=True):
