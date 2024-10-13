@@ -1,6 +1,6 @@
 """."""
 
-from pydantic import NonNegativeInt
+from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
     Relationship,
@@ -19,4 +19,4 @@ class ContaAReceberModel(DB.Model, table=True):
         foreign_key=OrdemDeServicoModel.id
     )
     ordem_de_servico: OrdemDeServicoModel | None = Relationship()
-    valor: float
+    valor: NonNegativeFloat

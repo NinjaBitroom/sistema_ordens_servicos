@@ -1,6 +1,6 @@
 """."""
 
-from pydantic import NonNegativeInt
+from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
     Relationship,
@@ -18,4 +18,4 @@ class ItemDaOrdemDeServicoModel(DB.Model, table=True):
     produto_id: NonNegativeInt | None = Field(foreign_key=ProdutoModel.id)
     produto: ProdutoModel | None = Relationship()
     quantidade: NonNegativeInt
-    valor_total_do_item: float
+    valor_total_do_item: NonNegativeFloat

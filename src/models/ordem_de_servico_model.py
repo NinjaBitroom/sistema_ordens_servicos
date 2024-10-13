@@ -2,7 +2,7 @@
 
 from datetime import date
 
-from pydantic import NonNegativeInt
+from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlalchemy import Text
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
@@ -24,6 +24,6 @@ class OrdemDeServicoModel(DB.Model, table=True):
     cliente_id: NonNegativeInt | None = Field(foreign_key="Clientes.id")
     cliente: ClienteModel | None = Relationship()
     descricao_do_problema: str = Field(sa_type=Text)
-    valor_total_da_ordem: float
+    valor_total_da_ordem: NonNegativeFloat
     data_: date = Field(default_factory=date.today)
     aberto: bool = Field(default=True)

@@ -12,11 +12,16 @@ def configure_env(app: Flask) -> None:
     )
     app.config["ALEMBIC"] = {
         "post_write_hooks": {
-            "hooks": "ruff",
+            "hooks": "ruff, pre-commit, git",
             "ruff.type": "exec",
-            "ruff.entrypoint": "ruff",
             "ruff.executable": "ruff",
             "ruff.options": "format REVISION_SCRIPT_FILENAME",
+            "pre-commit.type": "exec",
+            "pre-commit.executable": "pre-commit",
+            "pre-commit.options": "run --files REVISION_SCRIPT_FILENAME",
+            "git.type": "exec",
+            "git.executable": "git",
+            "git.options": "add REVISION_SCRIPT_FILENAME",
         }
     }
     app.config["ALEMBIC_CONTEXT"] = {"user_module_prefix": "sqlmodel."}

@@ -17,7 +17,7 @@ class ClienteModel(EnderecoModel, TelefonesModel, table=True):
     __tablename__ = "Clientes"  # type: ignore  # noqa: PGH003
     id: NonNegativeInt | None = Field(default=None, primary_key=True)
     nome: str
-    sexo: Genders | None = Field()
+    sexo: Genders | None = Field(default=None)
     nascimento: PastDate | None = Field(sa_type=Date)
     cpf: str | None
     data_de_cadastro: date | None = Field(default_factory=date.today)

@@ -18,7 +18,7 @@ class FuncionarioModel(EnderecoModel, TelefonesModel, table=True):
     __tablename__ = "Funcionários"  # type: ignore  # noqa: PGH003
     id: NonNegativeInt | None = Field(default=None, primary_key=True)
     nome: str
-    sexo: Genders | None = Field()
+    sexo: Genders | None = Field(default=None)
     nascimento: PastDate | None = Field(sa_type=Date)
     cpf: str | None
     email: EmailStr | None
