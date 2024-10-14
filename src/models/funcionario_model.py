@@ -4,6 +4,7 @@ from datetime import date
 
 from pydantic import EmailStr, NonNegativeInt, PastDate
 from sqlalchemy import Date
+from sqlalchemy_utils import EmailType  # type: ignore  # noqa: PGH003
 from sqlmodel import Field, Relationship  # type: ignore  # noqa: PGH003
 
 from src.models.base.endereco_model import EnderecoModel
@@ -21,7 +22,7 @@ class FuncionarioModel(EnderecoModel, TelefonesModel, table=True):
     sexo: Genders | None = Field(default=None)
     nascimento: PastDate | None = Field(sa_type=Date)
     cpf: str | None
-    email: EmailStr | None
+    email: EmailStr | None = Field(sa_type=EmailType)
     cargo_id: int | None = Field(foreign_key="Cargos dos funcionários.id")
     cargo: CargoDoFuncionarioModel | None = Relationship()
     data_de_cadastro: date | None = Field(default_factory=date.today)

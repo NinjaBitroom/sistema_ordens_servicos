@@ -4,6 +4,7 @@ from datetime import date
 
 from pydantic import EmailStr, NonNegativeInt, PastDate
 from sqlalchemy import Date
+from sqlalchemy_utils import EmailType  # type: ignore  # noqa: PGH003
 from sqlmodel import Field  # type: ignore  # noqa: PGH003
 
 from src.models.base.endereco_model import EnderecoModel
@@ -21,7 +22,7 @@ class ClienteModel(EnderecoModel, TelefonesModel, table=True):
     nascimento: PastDate | None = Field(sa_type=Date)
     cpf: str | None
     data_de_cadastro: date | None = Field(default_factory=date.today)
-    email: EmailStr | None = Field(default=None)
+    email: EmailStr | None = Field(sa_type=EmailType)
 
     def __repr__(self) -> str:
         """."""
