@@ -29,5 +29,5 @@ class ServiceOrderIndexView(MethodView):
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
         return render_template(
-            "pages/service_order/index.html", services=response.body
+            "pages/service_order/index.html", models=response.body
         )

@@ -27,5 +27,5 @@ class SupplierIndexView(MethodView):
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
         return render_template(
-            "pages/supplier/index.html", suppliers=response.body
+            "pages/supplier/index.html", models=response.body
         )

@@ -29,5 +29,5 @@ class EmployeePositionIndexView(MethodView):
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
         return render_template(
-            "pages/employee_position/index.html", roles=response.body
+            "pages/employee_position/index.html", models=response.body
         )
