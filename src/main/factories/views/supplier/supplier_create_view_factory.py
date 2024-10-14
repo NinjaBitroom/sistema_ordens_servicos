@@ -5,7 +5,7 @@ from flask.typing import RouteCallable
 from src.controllers.supplier.supplier_create_controller import (
     SupplierCreateController,
 )
-from src.forms.fornecedor_form import FornecedorForm
+from src.forms.fornecedor_model_form import FornecedorModelForm
 from src.models.fornecedor_model import FornecedorModel
 from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
@@ -16,9 +16,9 @@ from src.views.supplier.supplier_create_view import SupplierCreateView
 
 def make_supplier_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[FornecedorForm]()
+    validation = FlaskWtfValidation[FornecedorModelForm]()
     data_access_object = FlaskSqlAlchemyOperations(FornecedorModel, DB)
-    form_access_object = FlaskWtfOperations(FornecedorForm)
+    form_access_object = FlaskWtfOperations(FornecedorModelForm)
     controller = SupplierCreateController(
         validation, data_access_object, form_access_object
     )

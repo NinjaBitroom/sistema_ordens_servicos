@@ -7,7 +7,7 @@ from src.models.cargo_do_funcionario_model import CargoDoFuncionarioModel
 from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
-CargoDoFuncionarioForm = model_form(
+CargoDoFuncionarioModelForm = model_form(
     CargoDoFuncionarioModel,
     base_class=FlaskForm,
     db_session=DB.session,

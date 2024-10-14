@@ -5,7 +5,7 @@ from flask.typing import RouteCallable
 from src.controllers.client.client_create_controller import (
     ClientCreateController,
 )
-from src.forms.cliente_form import ClienteForm
+from src.forms.cliente_model_form import ClienteModelForm
 from src.models.cliente_model import ClienteModel
 from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
@@ -16,9 +16,9 @@ from src.views.client.client_create_view import ClientCreateView
 
 def make_client_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[ClienteForm]()
+    validation = FlaskWtfValidation[ClienteModelForm]()
     data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
-    form_access_object = FlaskWtfOperations(ClienteForm)
+    form_access_object = FlaskWtfOperations(ClienteModelForm)
     controller = ClientCreateController(
         validation, data_access_object, form_access_object
     )

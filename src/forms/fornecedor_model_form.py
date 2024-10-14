@@ -3,17 +3,17 @@
 from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
 
-from src.models.cliente_model import ClienteModel
+from src.models.fornecedor_model import FornecedorModel
 from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
-ClienteForm = model_form(
-    ClienteModel,
+FornecedorModelForm = model_form(
+    FornecedorModel,
     base_class=FlaskForm,
     db_session=DB.session,
     converter=SqlModelConverter(),
     field_args={
-        "cpf": {"label": "CPF"},
+        "cnpj": {"label": "CNPJ"},
         "email": {"label": "E-mail"},
         "telefone_celular": {"label": "Celular"},
         "endereco_rua": {"label": "Rua"},

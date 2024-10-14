@@ -5,7 +5,9 @@ from flask.typing import RouteCallable
 from src.controllers.employee_position.employee_position_create_controller import (
     EmployeePositionCreateController,
 )
-from src.forms.cargo_do_funcionario_form import CargoDoFuncionarioForm
+from src.forms.cargo_do_funcionario_model_form import (
+    CargoDoFuncionarioModelForm,
+)
 from src.models.cargo_do_funcionario_model import CargoDoFuncionarioModel
 from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
@@ -18,9 +20,9 @@ from src.views.employee_position.employee_position_create_view import (
 
 def make_employee_position_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[CargoDoFuncionarioForm]()
+    validation = FlaskWtfValidation[CargoDoFuncionarioModelForm]()
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
-    form_access_object = FlaskWtfOperations(CargoDoFuncionarioForm)
+    form_access_object = FlaskWtfOperations(CargoDoFuncionarioModelForm)
     controller = EmployeePositionCreateController(
         validation, data_access_object, form_access_object
     )

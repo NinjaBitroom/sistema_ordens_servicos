@@ -4,7 +4,7 @@ from http import HTTPStatus
 
 from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
-from src.forms.funcionario_form import FuncionarioForm
+from src.forms.funcionario_model_form import FuncionarioModelForm
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.form.form_create_response import FormCreateResponse
@@ -15,7 +15,7 @@ from src.protocols.validaton import Validation
 
 
 class EmployeeCreateController(
-    Controller[None, FormCreateResponse[FuncionarioForm]]
+    Controller[None, FormCreateResponse[FuncionarioModelForm]]
 ):
     """."""
 
