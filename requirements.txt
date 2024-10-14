@@ -51,6 +51,7 @@ regex==2024.9.11
 ruff==0.6.9
 six==1.16.0
 sqlalchemy==2.0.35
+sqlalchemy-utils==0.41.2
 sqlmodel==0.0.22
 termcolor==2.4.0
 tomlkit==0.13.2
