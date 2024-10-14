@@ -6,7 +6,7 @@ from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
 from src.services.extensions.database import DB
 
-OrdemDeServicoModelForm = model_form(
+OrdemDeServicoModelForm: type[FlaskForm] = model_form(
     OrdemDeServicoModel,
     base_class=FlaskForm,
     db_session=DB.session,

@@ -7,7 +7,7 @@ from src.models.fornecedor_model import FornecedorModel
 from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
-FornecedorModelForm = model_form(
+FornecedorModelForm: type[FlaskForm] = model_form(
     FornecedorModel,
     base_class=FlaskForm,
     db_session=DB.session,

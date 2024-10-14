@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}
+  Gerenciar Marcas
+{% endblock title %}
+{% block content %}
+  <h1>Gerenciar Marcas</h1>
+  <a href="{{ url_for('brand.create') }}" role="button">Cadastrar Marcas</a>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for brand in brands %}
+        <tr>
+          <td>{{ brand.id }}</td>
+          <td>{{ brand.nome }}</td>
+          <td>
+            <a href="#"
+               role="button"
+               data-tooltip="Visualizar"
+               class="pico-background-blue-500"><i class="bi bi-eye-fill"></i></a>
+            <a href="#"
+               role="button"
+               data-tooltip="Editar"
+               class="pico-background-yellow-100"><i class="bi bi-pencil-fill"></i></a>
+            <a href="#"
+               role="button"
+               data-tooltip="Excluir"
+               class="pico-background-red-500"><i class="bi bi-trash-fill"></i></a>
+          </td>
+        </tr>
+      {% else %}
+        Não há marcas cadastradas.
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

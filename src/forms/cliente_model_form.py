@@ -7,7 +7,7 @@ from src.models.cliente_model import ClienteModel
 from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
-ClienteModelForm = model_form(
+ClienteModelForm: type[FlaskForm] = model_form(
     ClienteModel,
     base_class=FlaskForm,
     db_session=DB.session,
