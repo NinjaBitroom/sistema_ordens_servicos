@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.13.0 (2024-10-14)
+
+### Feat
+
+- add brands
+- add SQLAlchemy-Utils
+
+### Fix
+
+- use email fields for email columns
+
+### Refactor
+
+- use a default param to index templates
+- add an helper to create model forms
+- move pages to a pages folder
+- add field_args type
+- rename forms to model forms
+
 ## 0.12.0 (2024-10-13)
 
 ### Feat
