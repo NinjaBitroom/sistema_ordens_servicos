@@ -15,7 +15,7 @@ class SqlModelConverter(ModelConverter):
 
     @converts("sqlmodel.sql.sqltypes.AutoString")
     def conv_auto_string(
-        self, field_args: object, **extra: object
+        self, field_args: Mapping[Any, Any], **extra: object
     ) -> StringField:
         """."""
         StringField()
