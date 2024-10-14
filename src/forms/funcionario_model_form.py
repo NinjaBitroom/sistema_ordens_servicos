@@ -1,17 +1,10 @@
 """."""
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
-from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
-
 from src.models.funcionario_model import FuncionarioModel
-from src.services.extensions.database import DB
-from src.utils.sql_model_converter import SqlModelConverter
+from src.utils.form_from_model import make_form_from_model
 
-FuncionarioModelForm: type[FlaskForm] = model_form(
+FuncionarioModelForm = make_form_from_model(
     FuncionarioModel,
-    base_class=FlaskForm,
-    db_session=DB.session,
-    converter=SqlModelConverter(),
     field_args={
         "cpf": {"label": "CPF"},
         "email": {"label": "E-mail"},

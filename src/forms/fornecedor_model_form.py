@@ -1,17 +1,10 @@
 """."""
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
-from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
-
 from src.models.fornecedor_model import FornecedorModel
-from src.services.extensions.database import DB
-from src.utils.sql_model_converter import SqlModelConverter
+from src.utils.form_from_model import make_form_from_model
 
-FornecedorModelForm: type[FlaskForm] = model_form(
+FornecedorModelForm = make_form_from_model(
     FornecedorModel,
-    base_class=FlaskForm,
-    db_session=DB.session,
-    converter=SqlModelConverter(),
     field_args={
         "cnpj": {"label": "CNPJ"},
         "email": {"label": "E-mail"},

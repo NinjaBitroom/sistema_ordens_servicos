@@ -1,15 +1,10 @@
 """."""
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
-from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
-
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
-from src.services.extensions.database import DB
+from src.utils.form_from_model import make_form_from_model
 
-OrdemDeServicoModelForm: type[FlaskForm] = model_form(
+OrdemDeServicoModelForm = make_form_from_model(
     OrdemDeServicoModel,
-    base_class=FlaskForm,
-    db_session=DB.session,
     exclude=["aberto"],
     field_args={
         "tecnico": {"label": "Técnico"},
