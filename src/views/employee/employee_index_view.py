@@ -26,4 +26,6 @@ class EmployeeIndexView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("employee/index.html", employees=response.body)
+        return render_template(
+            "pages/employee/index.html", employees=response.body
+        )

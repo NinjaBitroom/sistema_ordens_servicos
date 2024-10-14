@@ -25,4 +25,4 @@ class BrandIndexView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("brand/index.html", brands=response.body)
+        return render_template("pages/brand/index.html", brands=response.body)

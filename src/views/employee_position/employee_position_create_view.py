@@ -26,7 +26,7 @@ class EmployeePositionCreateView(MethodView):
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
         return render_template(
-            "employee_position/create.html", form=response.body.form
+            "pages/employee_position/create.html", form=response.body.form
         )
 
     def post(self) -> object:
@@ -40,5 +40,5 @@ class EmployeePositionCreateView(MethodView):
         for error in response.body.exception.args:
             flash(error, "error")
         return render_template(
-            "employee_position/create.html", form=response.body.form
+            "pages/employee_position/create.html", form=response.body.form
         )

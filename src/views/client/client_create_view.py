@@ -25,7 +25,9 @@ class ClientCreateView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("client/create.html", form=response.body.form)
+        return render_template(
+            "pages/client/create.html", form=response.body.form
+        )
 
     def post(self) -> object:
         """."""
@@ -37,4 +39,6 @@ class ClientCreateView(MethodView):
             return redirect(url_for("client.index"))
         for error in response.body.exception.args:
             flash(error, "error")
-        return render_template("client/create.html", form=response.body.form)
+        return render_template(
+            "pages/client/create.html", form=response.body.form
+        )

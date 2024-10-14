@@ -25,7 +25,9 @@ class BrandCreateView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("brand/create.html", form=response.body.form)
+        return render_template(
+            "pages/brand/create.html", form=response.body.form
+        )
 
     def post(self) -> object:
         """."""
@@ -37,4 +39,6 @@ class BrandCreateView(MethodView):
             return redirect(url_for("brand.index"))
         for error in response.body.exception.args:
             flash(error, "error")
-        return render_template("brand/create.html", form=response.body.form)
+        return render_template(
+            "pages/brand/create.html", form=response.body.form
+        )

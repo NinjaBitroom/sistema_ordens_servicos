@@ -25,7 +25,9 @@ class SupplierCreateView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("supplier/create.html", form=response.body.form)
+        return render_template(
+            "pages/supplier/create.html", form=response.body.form
+        )
 
     def post(self) -> object:
         """."""
@@ -37,4 +39,6 @@ class SupplierCreateView(MethodView):
             return redirect(url_for("supplier.index"))
         for error in response.body.exception.args:
             flash(error, "error")
-        return render_template("supplier/create.html", form=response.body.form)
+        return render_template(
+            "pages/supplier/create.html", form=response.body.form
+        )

@@ -25,4 +25,6 @@ class ClientIndexView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("client/index.html", clients=response.body)
+        return render_template(
+            "pages/client/index.html", clients=response.body
+        )

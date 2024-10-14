@@ -26,4 +26,6 @@ class SupplierIndexView(MethodView):
         response = self.__CONTROLLER.handle(
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
-        return render_template("supplier/index.html", suppliers=response.body)
+        return render_template(
+            "pages/supplier/index.html", suppliers=response.body
+        )

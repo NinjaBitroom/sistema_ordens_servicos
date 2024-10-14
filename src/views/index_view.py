@@ -9,4 +9,4 @@ class IndexView(MethodView):
 
     def get(self) -> object:
         """."""
-        return render_template("index.html")
+        return render_template("pages/index.html")

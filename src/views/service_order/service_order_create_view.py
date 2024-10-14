@@ -27,7 +27,7 @@ class ServiceOrderCreateView(MethodView):
             HttpRequest(method=HTTPMethod.GET, body=None)
         )
         return render_template(
-            "service_order/create.html", form=response.body.form
+            "pages/service_order/create.html", form=response.body.form
         )
 
     def post(self) -> object:
@@ -41,5 +41,5 @@ class ServiceOrderCreateView(MethodView):
         for error in response.body.exception.args:
             flash(error, "error")
         return render_template(
-            "service_order/create.html", form=response.body.form
+            "pages/service_order/create.html", form=response.body.form
         )
