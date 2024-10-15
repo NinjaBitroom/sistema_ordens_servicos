@@ -5,10 +5,10 @@ from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 from src.protocols.validaton import Validation
 
 
-class FlaskWtfValidation[T: FlaskForm](Validation[T]):
+class FlaskWtfValidation(Validation[FlaskForm]):
     """."""
 
-    def validate(self, data: T) -> None | Exception:
+    def validate(self, data: FlaskForm) -> None | Exception:
         """."""
         if data.validate_on_submit():  # type: ignore  # noqa: PGH003
             return None

@@ -16,7 +16,7 @@ from src.views.supplier.supplier_create_view import SupplierCreateView
 
 def make_supplier_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[FornecedorModelForm]()
+    validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(FornecedorModel, DB)
     form_access_object = FlaskWtfOperations(FornecedorModelForm)
     controller = SupplierCreateController(

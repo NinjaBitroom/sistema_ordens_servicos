@@ -20,7 +20,7 @@ from src.views.employee_position.employee_position_create_view import (
 
 def make_employee_position_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[CargoDoFuncionarioModelForm]()
+    validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
     form_access_object = FlaskWtfOperations(CargoDoFuncionarioModelForm)
     controller = EmployeePositionCreateController(

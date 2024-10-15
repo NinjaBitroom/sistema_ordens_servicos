@@ -16,7 +16,7 @@ from src.views.employee.employee_create_view import EmployeeCreateView
 
 def make_employee_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[FuncionarioModelForm]()
+    validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(FuncionarioModel, DB)
     form_access_object = FlaskWtfOperations(FuncionarioModelForm)
     controller = EmployeeCreateController(

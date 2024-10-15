@@ -16,7 +16,7 @@ from src.views.client.client_create_view import ClientCreateView
 
 def make_client_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[ClienteModelForm]()
+    validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
     form_access_object = FlaskWtfOperations(ClienteModelForm)
     controller = ClientCreateController(

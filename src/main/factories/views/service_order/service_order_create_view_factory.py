@@ -18,7 +18,7 @@ from src.views.service_order.service_order_create_view import (
 
 def make_service_order_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation[OrdemDeServicoModelForm]()
+    validation = FlaskWtfValidation()
     service_order_data_access_object = FlaskSqlAlchemyOperations(
         OrdemDeServicoModel, DB
     )
