@@ -1,7 +1,6 @@
 """."""
 
 from http import HTTPStatus
-from typing import Any
 
 from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
@@ -13,7 +12,9 @@ from src.protocols.http.http_response import HttpResponse
 from src.protocols.validaton import Validation
 
 
-class BrandCreateController(Controller[Any, Any]):
+class BrandCreateController(
+    Controller[FlaskForm, FormCreateResponse[FlaskForm]]
+):
     """."""
 
     def __init__(
