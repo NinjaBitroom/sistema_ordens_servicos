@@ -16,15 +16,17 @@ class ServiceOrderCreateView(MethodView):
 
     def __init__(
         self,
-        controller: Controller[None, FormCreateResponse[FlaskForm]],
+        controller: Controller[FlaskForm, FormCreateResponse[FlaskForm]],
+        form: type[FlaskForm],
     ) -> None:
         """."""
         self.__CONTROLLER = controller
+        self.__FORM = form()
 
     def get(self) -> object:
         """."""
         response = self.__CONTROLLER.handle(
-            HttpRequest(method=HTTPMethod.GET, body=None)
+            HttpRequest(method=HTTPMethod.GET, body=self.__FORM)
         )
         return render_template(
             "pages/service_order/create.html", form=response.body.form
@@ -33,7 +35,7 @@ class ServiceOrderCreateView(MethodView):
     def post(self) -> object:
         """."""
         response = self.__CONTROLLER.handle(
-            HttpRequest(method=HTTPMethod.POST, body=None)
+            HttpRequest(method=HTTPMethod.POST, body=self.__FORM)
         )
         if response.body.exception is None:
             flash("Ordem de Serviço cadastrada com sucesso")

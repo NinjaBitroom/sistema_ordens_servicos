@@ -9,7 +9,6 @@ from src.forms.ordem_de_servico_model_form import OrdemDeServicoModelForm
 from src.models.ordem_de_servico_model import OrdemDeServicoModel
 from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
-from src.utils.flask_wtf_operations import FlaskWtfOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
 from src.views.service_order.service_order_create_view import (
     ServiceOrderCreateView,
@@ -19,13 +18,11 @@ from src.views.service_order.service_order_create_view import (
 def make_service_order_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
-    service_order_data_access_object = FlaskSqlAlchemyOperations(
-        OrdemDeServicoModel, DB
-    )
-    form_access_object = FlaskWtfOperations(OrdemDeServicoModelForm)
+    data_access_object = FlaskSqlAlchemyOperations(OrdemDeServicoModel, DB)
     controller = ServiceOrderCreateController(
         validation,
-        service_order_data_access_object,
-        form_access_object,
+        data_access_object,
     )
-    return ServiceOrderCreateView.as_view("create", controller)
+    return ServiceOrderCreateView.as_view(
+        "create", controller, OrdemDeServicoModelForm
+    )
