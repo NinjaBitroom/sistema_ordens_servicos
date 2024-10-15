@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.0 (2024-10-15)
+
+### Feat
+
+- improve validators
+
 ## 0.13.1 (2024-10-14)
 
 ### Refactor
