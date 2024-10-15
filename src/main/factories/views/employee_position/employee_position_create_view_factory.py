@@ -1,6 +1,7 @@
 """."""
 
 from flask.typing import RouteCallable
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
 from src.controllers.employee_position.employee_position_create_controller import (
     EmployeePositionCreateController,
@@ -19,10 +20,12 @@ def make_employee_position_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
-    controller = EmployeePositionCreateController(
-        validation, data_access_object
+    mapper = Mapper[FlaskForm, CargoDoFuncionarioModel](
+        CargoDoFuncionarioModel
     )
-    mapper = Mapper()
+    controller = EmployeePositionCreateController(
+        validation, data_access_object, mapper
+    )
     return EmployeePositionCreateView.as_view(
         "create", controller, mapper.model_to_form(CargoDoFuncionarioModel)
     )

@@ -1,6 +1,7 @@
 """."""
 
 from flask.typing import RouteCallable
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
 from src.controllers.supplier.supplier_create_controller import (
     SupplierCreateController,
@@ -17,8 +18,8 @@ def make_supplier_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(FornecedorModel, DB)
-    controller = SupplierCreateController(validation, data_access_object)
-    mapper = Mapper(
+    mapper = Mapper[FlaskForm, FornecedorModel](
+        FornecedorModel,
         field_args={
             "cnpj": {"label": "CNPJ"},
             "email": {"label": "E-mail"},
@@ -31,6 +32,9 @@ def make_supplier_create_view() -> RouteCallable:
                 "label": "Data de Cadastro no Sistema"
             },
         },
+    )
+    controller = SupplierCreateController(
+        validation, data_access_object, mapper
     )
     return SupplierCreateView.as_view(
         "create", controller, mapper.model_to_form(FornecedorModel)

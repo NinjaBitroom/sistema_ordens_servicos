@@ -1,6 +1,7 @@
 """."""
 
 from flask.typing import RouteCallable
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
 from src.controllers.client.client_create_controller import (
     ClientCreateController,
@@ -17,8 +18,8 @@ def make_client_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
-    controller = ClientCreateController(validation, data_access_object)
-    mapper = Mapper(
+    mapper = Mapper[FlaskForm, ClienteModel](
+        ClienteModel,
         field_args={
             "cpf": {"label": "CPF"},
             "email": {"label": "E-mail"},
@@ -32,6 +33,7 @@ def make_client_create_view() -> RouteCallable:
             },
         },
     )
+    controller = ClientCreateController(validation, data_access_object, mapper)
     return ClientCreateView.as_view(
         "create", controller, mapper.model_to_form(ClienteModel)
     )

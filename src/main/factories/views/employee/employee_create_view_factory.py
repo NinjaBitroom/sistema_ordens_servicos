@@ -1,6 +1,7 @@
 """."""
 
 from flask.typing import RouteCallable
+from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
 from src.controllers.employee.employee_create_controller import (
     EmployeeCreateController,
@@ -17,8 +18,8 @@ def make_employee_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(FuncionarioModel, DB)
-    controller = EmployeeCreateController(validation, data_access_object)
-    mapper = Mapper(
+    mapper = Mapper[FlaskForm, FuncionarioModel](
+        FuncionarioModel,
         field_args={
             "cpf": {"label": "CPF"},
             "email": {"label": "E-mail"},
@@ -29,6 +30,9 @@ def make_employee_create_view() -> RouteCallable:
             "endereco_cep": {"label": "CEP"},
             "data_de_cadastro": {"label": "Data de Cadastro no Sistema"},
         },
+    )
+    controller = EmployeeCreateController(
+        validation, data_access_object, mapper
     )
     return EmployeeCreateView.as_view(
         "create", controller, mapper.model_to_form(FuncionarioModel)
