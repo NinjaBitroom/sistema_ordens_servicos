@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.13.1 (2024-10-14)
+
+### Refactor
+
+- change helper to types conversion
+- create a helper to mapping models
+- create a helper to mapping forms
+- remove unused operations
+- change how SupplierCreateController handle forms
+- change how ServiceOrderCreateController handle forms
+- change how EmployeePositionCreateController handle forms
+- change how EmployeeCreateController handle forms
+- change how ClientCreateController handle forms
+- change how BrandCreateController handle forms
+
 ## 0.13.0 (2024-10-14)
 
 ### Feat
