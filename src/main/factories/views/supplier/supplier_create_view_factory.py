@@ -11,12 +11,14 @@ from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
 from src.utils.mapper import Mapper
+from src.utils.sql_model_validation import SqlModelValidation
 from src.views.supplier.supplier_create_view import SupplierCreateView
 
 
 def make_supplier_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation()
+    flask_wtf_validation = FlaskWtfValidation()
+    sql_model_validation = SqlModelValidation(FornecedorModel)
     data_access_object = FlaskSqlAlchemyOperations(FornecedorModel, DB)
     mapper = Mapper[FlaskForm, FornecedorModel](
         FornecedorModel,
@@ -34,7 +36,7 @@ def make_supplier_create_view() -> RouteCallable:
         },
     )
     controller = SupplierCreateController(
-        validation, data_access_object, mapper
+        flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return SupplierCreateView.as_view(
         "create", controller, mapper.model_type_to_form_type(FornecedorModel)

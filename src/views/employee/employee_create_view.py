@@ -40,8 +40,7 @@ class EmployeeCreateView(MethodView):
         if response.body.exception is None:
             flash("Funcionário cadastrado com sucesso")
             return redirect(url_for("employee.index"))
-        for error in response.body.exception.args:
-            flash(error, "error")
+        flash(str(response.body.exception), "error")
         return render_template(
             "pages/employee/create.html", form=response.body.form
         )

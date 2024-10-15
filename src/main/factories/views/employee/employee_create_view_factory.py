@@ -11,12 +11,14 @@ from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
 from src.utils.mapper import Mapper
+from src.utils.sql_model_validation import SqlModelValidation
 from src.views.employee.employee_create_view import EmployeeCreateView
 
 
 def make_employee_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation()
+    flask_wtf_validation = FlaskWtfValidation()
+    sql_model_validation = SqlModelValidation(FuncionarioModel)
     data_access_object = FlaskSqlAlchemyOperations(FuncionarioModel, DB)
     mapper = Mapper[FlaskForm, FuncionarioModel](
         FuncionarioModel,
@@ -32,7 +34,7 @@ def make_employee_create_view() -> RouteCallable:
         },
     )
     controller = EmployeeCreateController(
-        validation, data_access_object, mapper
+        flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return EmployeeCreateView.as_view(
         "create", controller, mapper.model_type_to_form_type(FuncionarioModel)

@@ -1,11 +1,11 @@
 """."""
 
-from enum import StrEnum
+from enum import StrEnum, auto
 
 
 class Genders(StrEnum):
     """."""
 
-    Masculino = "M"
-    Feminino = "F"
-    Outro = "O"
+    masculino = auto()
+    feminino = auto()
+    outro = auto()

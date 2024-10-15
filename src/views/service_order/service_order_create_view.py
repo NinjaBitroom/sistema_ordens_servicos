@@ -40,8 +40,7 @@ class ServiceOrderCreateView(MethodView):
         if response.body.exception is None:
             flash("Ordem de Serviço cadastrada com sucesso")
             return redirect(url_for("service_order.index"))
-        for error in response.body.exception.args:
-            flash(error, "error")
+        flash(str(response.body.exception), "error")
         return render_template(
             "pages/service_order/create.html", form=response.body.form
         )

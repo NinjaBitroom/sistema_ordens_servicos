@@ -40,8 +40,7 @@ class ClientCreateView(MethodView):
         if response.body.exception is None:
             flash("Cliente cadastrado com sucesso")
             return redirect(url_for("client.index"))
-        for error in response.body.exception.args:
-            flash(error, "error")
+        flash(str(response.body.exception), "error")
         return render_template(
             "pages/client/create.html", form=response.body.form
         )

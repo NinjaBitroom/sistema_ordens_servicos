@@ -11,6 +11,7 @@ from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
 from src.utils.mapper import Mapper
+from src.utils.sql_model_validation import SqlModelValidation
 from src.views.service_order.service_order_create_view import (
     ServiceOrderCreateView,
 )
@@ -18,7 +19,8 @@ from src.views.service_order.service_order_create_view import (
 
 def make_service_order_create_view() -> RouteCallable:
     """."""
-    validation = FlaskWtfValidation()
+    flask_wtf_validation = FlaskWtfValidation()
+    sql_model_validation = SqlModelValidation(OrdemDeServicoModel)
     data_access_object = FlaskSqlAlchemyOperations(OrdemDeServicoModel, DB)
     mapper = Mapper[FlaskForm, OrdemDeServicoModel](
         OrdemDeServicoModel,
@@ -31,7 +33,7 @@ def make_service_order_create_view() -> RouteCallable:
         },
     )
     controller = ServiceOrderCreateController(
-        validation, data_access_object, mapper
+        flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return ServiceOrderCreateView.as_view(
         "create",

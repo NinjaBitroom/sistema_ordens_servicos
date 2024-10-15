@@ -21,16 +21,18 @@ class SupplierCreateController(
 
     def __init__(
         self,
-        validation: Validation[FlaskForm],
+        flask_form_validation: Validation[FlaskForm],
         db_add_one_operation: DbAddOneOperation[FornecedorModel],
         form_to_model_operation: FormToModelOperation[
             FlaskForm, FornecedorModel
         ],
+        sql_model_validation: Validation[FornecedorModel],
     ) -> None:
         """."""
-        self.__VALIDATION = validation
+        self.__FLASK_FORM_VALIDATION = flask_form_validation
         self.__DB_ADD_ONE_OPERATION = db_add_one_operation
         self.__FORM_TO_MODEL_OPERATION = form_to_model_operation
+        self.__SQL_MODEL_VALIDATION = sql_model_validation
 
     def handle(
         self, request: HttpRequest[FlaskForm]
@@ -38,11 +40,13 @@ class SupplierCreateController(
         """."""
         exception = None
         if request.method == "POST":
-            exception = self.__VALIDATION.validate(request.body)
+            exception = self.__FLASK_FORM_VALIDATION.validate(request.body)
             if exception is None:
                 model = self.__FORM_TO_MODEL_OPERATION.form_to_model(
                     request.body
                 )
-                self.__DB_ADD_ONE_OPERATION.add_one(model)
+                exception = self.__SQL_MODEL_VALIDATION.validate(model)
+                if exception is None:
+                    self.__DB_ADD_ONE_OPERATION.add_one(model)
         response = FormCreateResponse(form=request.body, exception=exception)
         return HttpResponse(body=response, status_code=HTTPStatus.OK)

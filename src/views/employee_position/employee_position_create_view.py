@@ -40,8 +40,7 @@ class EmployeePositionCreateView(MethodView):
         if response.body.exception is None:
             flash("Cargo do funcionário cadastrado com sucesso")
             return redirect(url_for("employee_position.index"))
-        for error in response.body.exception.args:
-            flash(error, "error")
+        flash(str(response.body.exception), "error")
         return render_template(
             "pages/employee_position/create.html", form=response.body.form
         )

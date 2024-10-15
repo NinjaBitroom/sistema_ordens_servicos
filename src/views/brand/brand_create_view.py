@@ -40,8 +40,7 @@ class BrandCreateView(MethodView):
         if response.body.exception is None:
             flash("Marca cadastrada com sucesso")
             return redirect(url_for("brand.index"))
-        for error in response.body.exception.args:
-            flash(error, "error")
+        flash(str(response.body.exception), "error")
         return render_template(
             "pages/brand/create.html", form=response.body.form
         )
