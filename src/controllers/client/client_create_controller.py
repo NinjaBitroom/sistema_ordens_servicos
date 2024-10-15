@@ -4,7 +4,6 @@ from http import HTTPStatus
 
 from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
-from src.forms.cliente_model_form import ClienteModelForm
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.form.form_create_response import FormCreateResponse
@@ -14,7 +13,7 @@ from src.protocols.validaton import Validation
 
 
 class ClientCreateController(
-    Controller[FlaskForm, FormCreateResponse[ClienteModelForm]]
+    Controller[FlaskForm, FormCreateResponse[FlaskForm]]
 ):
     """."""
 
