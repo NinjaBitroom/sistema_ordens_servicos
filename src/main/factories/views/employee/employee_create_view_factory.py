@@ -35,5 +35,5 @@ def make_employee_create_view() -> RouteCallable:
         validation, data_access_object, mapper
     )
     return EmployeeCreateView.as_view(
-        "create", controller, mapper.model_to_form(FuncionarioModel)
+        "create", controller, mapper.model_type_to_form_type(FuncionarioModel)
     )

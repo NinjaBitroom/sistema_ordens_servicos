@@ -19,5 +19,5 @@ def make_brand_create_view() -> RouteCallable:
     mapper = Mapper[FlaskForm, MarcaModel](MarcaModel)
     controller = BrandCreateController(validation, data_access_object, mapper)
     return BrandCreateView.as_view(
-        "create", controller, mapper.model_to_form(MarcaModel)
+        "create", controller, mapper.model_type_to_form_type(MarcaModel)
     )

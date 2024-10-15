@@ -27,5 +27,7 @@ def make_employee_position_create_view() -> RouteCallable:
         validation, data_access_object, mapper
     )
     return EmployeePositionCreateView.as_view(
-        "create", controller, mapper.model_to_form(CargoDoFuncionarioModel)
+        "create",
+        controller,
+        mapper.model_type_to_form_type(CargoDoFuncionarioModel),
     )

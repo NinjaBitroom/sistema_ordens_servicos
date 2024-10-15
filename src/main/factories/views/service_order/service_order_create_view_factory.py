@@ -34,5 +34,7 @@ def make_service_order_create_view() -> RouteCallable:
         validation, data_access_object, mapper
     )
     return ServiceOrderCreateView.as_view(
-        "create", controller, mapper.model_to_form(OrdemDeServicoModel)
+        "create",
+        controller,
+        mapper.model_type_to_form_type(OrdemDeServicoModel),
     )

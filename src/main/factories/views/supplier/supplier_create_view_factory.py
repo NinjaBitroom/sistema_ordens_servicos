@@ -37,5 +37,5 @@ def make_supplier_create_view() -> RouteCallable:
         validation, data_access_object, mapper
     )
     return SupplierCreateView.as_view(
-        "create", controller, mapper.model_to_form(FornecedorModel)
+        "create", controller, mapper.model_type_to_form_type(FornecedorModel)
     )

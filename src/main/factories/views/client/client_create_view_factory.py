@@ -35,5 +35,5 @@ def make_client_create_view() -> RouteCallable:
     )
     controller = ClientCreateController(validation, data_access_object, mapper)
     return ClientCreateView.as_view(
-        "create", controller, mapper.model_to_form(ClienteModel)
+        "create", controller, mapper.model_type_to_form_type(ClienteModel)
     )

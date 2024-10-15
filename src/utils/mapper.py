@@ -9,13 +9,15 @@ from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
 
 from src.protocols.form.exclusion_config import ExclusionConfig
 from src.protocols.helpers.form_to_model_operation import FormToModelOperation
-from src.protocols.helpers.model_to_form_operation import ModelToFormOperation
+from src.protocols.helpers.model_type_to_form_type_operation import (
+    ModelTypeToFormTypeOperation,
+)
 from src.services.extensions.database import DB
 from src.utils.sql_model_converter import SqlModelConverter
 
 
 class Mapper[TForm: FlaskForm, TModel: SQLModel](
-    ModelToFormOperation[TModel, TForm],
+    ModelTypeToFormTypeOperation[TModel, TForm],
     FormToModelOperation[TForm, TModel],
 ):
     """."""
@@ -35,10 +37,12 @@ class Mapper[TForm: FlaskForm, TModel: SQLModel](
         self.__TYPE_NAME = type_name
         self.__EXCLUSION_CONFIG = exclusion_config
 
-    def model_to_form(self, model: type[TModel]) -> type[TForm]:
+    def model_type_to_form_type(
+        self, model_class: type[TModel]
+    ) -> type[TForm]:
         """."""
         return model_form(
-            model=model,
+            model=model_class,
             db_session=DB.session,
             base_class=FlaskForm,
             converter=SqlModelConverter(),
