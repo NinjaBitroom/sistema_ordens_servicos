@@ -10,14 +10,13 @@ from src.forms.cargo_do_funcionario_model_form import (
 from src.protocols.controller import Controller
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
 from src.protocols.form.form_create_response import FormCreateResponse
-from src.protocols.form.get_form_operation import GetFormOperation
 from src.protocols.http.http_request import HttpRequest
 from src.protocols.http.http_response import HttpResponse
 from src.protocols.validaton import Validation
 
 
 class EmployeePositionCreateController(
-    Controller[None, FormCreateResponse[CargoDoFuncionarioModelForm]]
+    Controller[FlaskForm, FormCreateResponse[CargoDoFuncionarioModelForm]]
 ):
     """."""
 
@@ -25,22 +24,19 @@ class EmployeePositionCreateController(
         self,
         validation: Validation[FlaskForm],
         db_add_one_operation: DbAddOneOperation,
-        get_form_operation: GetFormOperation[FlaskForm],
     ) -> None:
         """."""
         self.__VALIDATION = validation
         self.__DB_ADD_ONE_OPERATION = db_add_one_operation
-        self.__GET_FORM_OPERATION = get_form_operation
 
     def handle(
-        self, request: HttpRequest[None]
+        self, request: HttpRequest[FlaskForm]
     ) -> HttpResponse[FormCreateResponse[FlaskForm]]:
         """."""
         exception = None
-        form = self.__GET_FORM_OPERATION.get_form()
         if request.method == "POST":
-            exception = self.__VALIDATION.validate(form)
+            exception = self.__VALIDATION.validate(request.body)
             if exception is None:
-                self.__DB_ADD_ONE_OPERATION.add_one(form.data)
-        response = FormCreateResponse(form=form, exception=exception)
+                self.__DB_ADD_ONE_OPERATION.add_one(request.body.data)
+        response = FormCreateResponse(form=request.body, exception=exception)
         return HttpResponse(body=response, status_code=HTTPStatus.OK)

@@ -11,7 +11,6 @@ from src.forms.cargo_do_funcionario_model_form import (
 from src.models.cargo_do_funcionario_model import CargoDoFuncionarioModel
 from src.services.extensions.database import DB
 from src.services.flask_sql_alchemy_operations import FlaskSqlAlchemyOperations
-from src.utils.flask_wtf_operations import FlaskWtfOperations
 from src.utils.flask_wtf_validation import FlaskWtfValidation
 from src.views.employee_position.employee_position_create_view import (
     EmployeePositionCreateView,
@@ -22,8 +21,9 @@ def make_employee_position_create_view() -> RouteCallable:
     """."""
     validation = FlaskWtfValidation()
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
-    form_access_object = FlaskWtfOperations(CargoDoFuncionarioModelForm)
     controller = EmployeePositionCreateController(
-        validation, data_access_object, form_access_object
+        validation, data_access_object
     )
-    return EmployeePositionCreateView.as_view("create", controller)
+    return EmployeePositionCreateView.as_view(
+        "create", controller, CargoDoFuncionarioModelForm
+    )
