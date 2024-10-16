@@ -31,6 +31,8 @@ install = "@pdm install"
 run = "@pdm run"
 start = "@pdm start"
 update = ["@pdm update", "@run pre-commit autoupdate"]
+make_migrations = "@pdm make_migrations"
+migrate = "@pdm migrate"
 
 [tool.pdm]
 distribution = false
@@ -49,6 +51,8 @@ commit = [
 [tool.pdm.scripts]
 post_install = "pre-commit install"
 start = "flask run"
+make_migrations = "flask db revision"
+migrate = "flask db upgrade"
 
 [tool.pyright]
 typeCheckingMode = "strict"
