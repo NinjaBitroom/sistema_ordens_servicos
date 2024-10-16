@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.15.0 (2024-10-16)
+
+### Feat
+
+- link education to employees
+- add book icon to index.html
+- add education
+- add products
+
 ## 0.14.0 (2024-10-15)
 
 ### Feat
