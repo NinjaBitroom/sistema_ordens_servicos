@@ -7,9 +7,10 @@
     },
     "explorer.fileNesting.patterns": {
         "pdm.toml": "pdm.lock, .pdm-python",
-        "pyproject.toml": "pw, pw.bat",
+        "pyproject.toml": "requirements.txt",
         ".flaskenv": ".env",
         "README.md": "CHANGELOG.md",
+        "pw": "pw.bat, pw.lock",
     },
     "material-icon-theme.languages.associations": {
         "jinja-html": "html"
