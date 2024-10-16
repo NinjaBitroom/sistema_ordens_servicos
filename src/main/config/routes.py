@@ -4,6 +4,7 @@ from flask import Flask
 
 from src.main.routes.brand_routes import BRAND_BLUEPRINT
 from src.main.routes.client_routes import CLIENT_BLUEPRINT
+from src.main.routes.education_routes import EDUCATION_BLUEPRINT
 from src.main.routes.employee_position_routes import (
     EMPLOYEE_POSITION_BLUEPRINT,
 )
@@ -25,6 +26,7 @@ def setup_routes(app: Flask) -> None:
         EMPLOYEE_POSITION_BLUEPRINT,
         BRAND_BLUEPRINT,
         PRODUCT_BLUEPRINT,
+        EDUCATION_BLUEPRINT,
     )
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
