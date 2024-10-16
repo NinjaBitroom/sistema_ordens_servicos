@@ -6,7 +6,7 @@ from sqlmodel import (
     Relationship,
 )
 
-from models.marca_model import MarcaModel
+from src.models.marca_model import MarcaModel
 from src.services.extensions.database import DB
 
 
@@ -19,7 +19,7 @@ class ProdutoModel(DB.Model, table=True):
     valor_venda: NonNegativeFloat
     quantidade_em_estoque: NonNegativeInt
     marca_id: NonNegativeInt | None = Field(
-        default=None, foreign_key=MarcaModel.id
+        default=None, foreign_key="Marcas.id"
     )
     marca: MarcaModel | None = Relationship()
 
