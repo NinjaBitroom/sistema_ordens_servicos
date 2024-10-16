@@ -10,6 +10,7 @@ from sqlmodel import Field, Relationship  # type: ignore  # noqa: PGH003
 from src.models.base.endereco_model import EnderecoModel
 from src.models.base.telefones_model import TelefonesModel
 from src.models.cargo_do_funcionario_model import CargoDoFuncionarioModel
+from src.models.escolaridade_model import EscolaridadeModel
 from src.protocols.genders import Genders
 
 
@@ -23,9 +24,15 @@ class FuncionarioModel(EnderecoModel, TelefonesModel, table=True):
     nascimento: PastDate | None = Field(sa_type=Date)
     cpf: str | None
     email: EmailStr | None = Field(sa_type=EmailType)
-    cargo_id: int | None = Field(foreign_key="Cargos dos funcionários.id")
+    cargo_id: NonNegativeInt | None = Field(
+        foreign_key="Cargos dos funcionários.id"
+    )
     cargo: CargoDoFuncionarioModel | None = Relationship()
     data_de_cadastro: date | None = Field(default_factory=date.today)
+    escolaridade_id: NonNegativeInt | None = Field(
+        foreign_key="Escolaridades.id"
+    )
+    escolaridade: EscolaridadeModel | None = Relationship()
 
     def __repr__(self) -> str:
         """."""
