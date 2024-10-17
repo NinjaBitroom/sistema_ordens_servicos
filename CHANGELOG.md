@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.16.0 (2024-10-17)
+
+### BREAKING CHANGE
+
+- drop flask_sqlalchemy support
+
+### Refactor
+
+- change flask_sqlalchemy to flask_sqlalchemy_lite
+
 ## 0.15.0 (2024-10-16)
 
 ### Feat
