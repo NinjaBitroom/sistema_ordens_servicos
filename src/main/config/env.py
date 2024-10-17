@@ -24,5 +24,5 @@ def configure_env(app: Flask) -> None:
             "git.options": "add REVISION_SCRIPT_FILENAME",
         }
     }
-    app.config["ALEMBIC_CONTEXT"] = {"user_module_prefix": "sqlmodel."}
+    app.config["ALEMBIC_CONTEXT"] = {"user_module_prefix": "all_types."}
     app.secret_key = environ.get("SECRET_KEY", "segredo!")
