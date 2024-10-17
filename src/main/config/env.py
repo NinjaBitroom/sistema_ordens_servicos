@@ -7,9 +7,9 @@ from flask import Flask
 
 def configure_env(app: Flask) -> None:
     """."""
-    app.config["SQLALCHEMY_DATABASE_URI"] = environ.get(
-        "SQL_URI", "sqlite:///db.sqlite3"
-    )
+    app.config["SQLALCHEMY_ENGINES"] = {
+        "default": environ.get("SQL_URI", "sqlite:///db.sqlite3")
+    }
     app.config["ALEMBIC"] = {
         "post_write_hooks": {
             "hooks": "ruff, pre-commit, git",

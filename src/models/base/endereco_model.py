@@ -1,9 +1,9 @@
 """."""
 
-from src.services.extensions.database import DB
+from sqlmodel import SQLModel
 
 
-class EnderecoModel(DB.Model):
+class EnderecoModel(SQLModel):
     """."""
 
     endereco_rua: str | None

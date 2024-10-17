@@ -7,14 +7,14 @@ from sqlalchemy import Text
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
     Relationship,
+    SQLModel,
 )
 
 from src.models.cliente_model import ClienteModel
 from src.models.funcionario_model import FuncionarioModel
-from src.services.extensions.database import DB
 
 
-class OrdemDeServicoModel(DB.Model, table=True):
+class OrdemDeServicoModel(SQLModel, table=True):
     """."""
 
     __tablename__ = "Ordens de serviço"  # type: ignore  # noqa: PGH003

@@ -4,13 +4,13 @@ from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
     Relationship,
+    SQLModel,
 )
 
 from src.models.marca_model import MarcaModel
-from src.services.extensions.database import DB
 
 
-class ProdutoModel(DB.Model, table=True):
+class ProdutoModel(SQLModel, table=True):
     """."""
 
     __tablename__ = "Produtos"  # type: ignore  # noqa: PGH003

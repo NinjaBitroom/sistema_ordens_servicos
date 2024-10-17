@@ -20,22 +20,25 @@ def make_employee_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(FuncionarioModel)
     data_access_object = FlaskSqlAlchemyOperations(FuncionarioModel, DB)
-    mapper = Mapper[FlaskForm, FuncionarioModel](
+    mapper = Mapper(
         FuncionarioModel,
-        field_args={
-            "cpf": {"label": "CPF"},
-            "email": {"label": "E-mail"},
-            "telefone_celular": {"label": "Celular"},
-            "endereco_rua": {"label": "Rua"},
-            "endereco_bairro": {"label": "Bairro"},
-            "endereco_numero": {"label": "Número"},
-            "endereco_cep": {"label": "CEP"},
-            "data_de_cadastro": {"label": "Data de Cadastro no Sistema"},
+        FlaskForm,
+        model_form_config={
+            "field_args": {
+                "cpf": {"label": "CPF"},
+                "email": {"label": "E-mail"},
+                "telefone_celular": {"label": "Celular"},
+                "endereco_rua": {"label": "Rua"},
+                "endereco_bairro": {"label": "Bairro"},
+                "endereco_numero": {"label": "Número"},
+                "endereco_cep": {"label": "CEP"},
+                "data_de_cadastro": {"label": "Data de Cadastro no Sistema"},
+            },
         },
     )
     controller = EmployeeCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return EmployeeCreateView.as_view(
-        "create", controller, mapper.model_type_to_form_type(FuncionarioModel)
+        "create", controller, mapper, FuncionarioModel
     )

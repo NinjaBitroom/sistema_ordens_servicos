@@ -22,14 +22,10 @@ def make_employee_position_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(CargoDoFuncionarioModel)
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
-    mapper = Mapper[FlaskForm, CargoDoFuncionarioModel](
-        CargoDoFuncionarioModel
-    )
+    mapper = Mapper(CargoDoFuncionarioModel, FlaskForm, {})
     controller = EmployeePositionCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return EmployeePositionCreateView.as_view(
-        "create",
-        controller,
-        mapper.model_type_to_form_type(CargoDoFuncionarioModel),
+        "create", controller, mapper, CargoDoFuncionarioModel
     )

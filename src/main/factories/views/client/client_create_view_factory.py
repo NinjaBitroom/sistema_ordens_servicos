@@ -20,24 +20,25 @@ def make_client_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(ClienteModel)
     data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
-    mapper = Mapper[FlaskForm, ClienteModel](
+    mapper = Mapper(
         ClienteModel,
-        field_args={
-            "cpf": {"label": "CPF"},
-            "email": {"label": "E-mail"},
-            "telefone_celular": {"label": "Celular"},
-            "endereco_rua": {"label": "Rua"},
-            "endereco_bairro": {"label": "Bairro"},
-            "endereco_numero": {"label": "Número"},
-            "endereco_cep": {"label": "CEP"},
-            "data_de_cadastro_no_sistema": {
-                "label": "Data de Cadastro no Sistema"
+        FlaskForm,
+        model_form_config={
+            "field_args": {
+                "cpf": {"label": "CPF"},
+                "email": {"label": "E-mail"},
+                "telefone_celular": {"label": "Celular"},
+                "endereco_rua": {"label": "Rua"},
+                "endereco_bairro": {"label": "Bairro"},
+                "endereco_numero": {"label": "Número"},
+                "endereco_cep": {"label": "CEP"},
+                "data_de_cadastro_no_sistema": {
+                    "label": "Data de Cadastro no Sistema"
+                },
             },
         },
     )
     controller = ClientCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
-    return ClientCreateView.as_view(
-        "create", controller, mapper.model_type_to_form_type(ClienteModel)
-    )
+    return ClientCreateView.as_view("create", controller, mapper, ClienteModel)

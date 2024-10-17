@@ -3,7 +3,7 @@
 from collections.abc import Mapping
 from typing import Any
 
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy_lite import SQLAlchemy
 from sqlmodel import SQLModel
 
 from src.protocols.db.db_add_one_operation import DbAddOneOperation

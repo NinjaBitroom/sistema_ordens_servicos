@@ -6,8 +6,12 @@ from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
 from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
 
+from src.models.marca_model import MarcaModel
 from src.protocols.controller import Controller
 from src.protocols.form.form_create_response import FormCreateResponse
+from src.protocols.helpers.model_type_to_form_type_operation import (
+    ModelTypeToFormTypeOperation,
+)
 from src.protocols.http.http_request import HttpRequest
 
 
@@ -17,11 +21,17 @@ class BrandCreateView(MethodView):
     def __init__(
         self,
         controller: Controller[FlaskForm, FormCreateResponse[FlaskForm]],
-        form: type[FlaskForm],
+        model_type_to_form_type_operation: ModelTypeToFormTypeOperation[
+            MarcaModel, FlaskForm
+        ],
+        model_class: type[MarcaModel],
     ) -> None:
         """."""
         self.__CONTROLLER = controller
-        self.__FORM = form()
+        form_class = model_type_to_form_type_operation.model_type_to_form_type(
+            model_class
+        )
+        self.__FORM = form_class()
 
     def get(self) -> object:
         """."""

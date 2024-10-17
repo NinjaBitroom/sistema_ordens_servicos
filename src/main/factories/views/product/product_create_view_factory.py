@@ -20,10 +20,10 @@ def make_product_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(ProdutoModel)
     data_access_object = FlaskSqlAlchemyOperations(ProdutoModel, DB)
-    mapper = Mapper[FlaskForm, ProdutoModel](ProdutoModel)
+    mapper = Mapper(ProdutoModel, FlaskForm, {})
     controller = ProductCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
     return ProductCreateView.as_view(
-        "create", controller, mapper.model_type_to_form_type(ProdutoModel)
+        "create", controller, mapper, ProdutoModel
     )

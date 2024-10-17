@@ -4,13 +4,13 @@ from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlmodel import (
     Field,  # type: ignore  # noqa: PGH003
     Relationship,
+    SQLModel,
 )
 
 from models.produto_model import ProdutoModel
-from src.services.extensions.database import DB
 
 
-class ItemDaOrdemDeServicoModel(DB.Model, table=True):
+class ItemDaOrdemDeServicoModel(SQLModel, table=True):
     """."""
 
     __tablename__ = "Itens da ordem de serviço"  # type: ignore  # noqa: PGH003

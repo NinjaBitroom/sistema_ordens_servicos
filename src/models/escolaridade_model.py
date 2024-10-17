@@ -1,12 +1,10 @@
 """."""
 
 from pydantic import NonNegativeInt
-from sqlmodel import Field  # type: ignore  # noqa: PGH003
-
-from src.services.extensions.database import DB
+from sqlmodel import Field, SQLModel  # type: ignore  # noqa: PGH003
 
 
-class EscolaridadeModel(DB.Model, table=True):
+class EscolaridadeModel(SQLModel, table=True):
     """."""
 
     __tablename__ = "Escolaridades"  # type: ignore  # noqa: PGH003
