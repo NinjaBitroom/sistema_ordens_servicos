@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.17.0 (2024-10-21)
+
+### Feat
+
+- add Enterprise
+- add all tables to database
+
 ## 0.16.0 (2024-10-17)
 
 ### BREAKING CHANGE
