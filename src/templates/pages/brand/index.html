@@ -19,7 +19,7 @@
           <td>{{ model.id }}</td>
           <td>{{ model.nome }}</td>
           <td>
-            <a href="#"
+            <a href="{{ url_for('brand.detail', id=model.id) }}"
                role="button"
                data-tooltip="Visualizar"
                class="pico-background-blue-500"><i class="bi bi-eye-fill"></i></a>
