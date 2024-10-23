@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.18.0 (2024-10-22)
+
+### Feat
+
+- add Brand deletion
+- add Brand details
+
 ## 0.17.0 (2024-10-21)
 
 ### Feat
