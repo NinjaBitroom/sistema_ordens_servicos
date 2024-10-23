@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <a href="{{ url_for('supplier.index') }}">Voltar</a>
+  <h1>Detalhes do Fornecedor</h1>
+  <table>
+    <tbody>
+      {% for field in model %}
+        <tr>
+          <td>{{ field[0] }}</td>
+          <td>{{ field[1] }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}

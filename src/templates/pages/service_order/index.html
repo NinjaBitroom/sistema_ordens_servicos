@@ -27,7 +27,7 @@
             {% endif %}
           </td>
           <td>
-            <a href="#"
+            <a href="{{ url_for('service_order.detail', id=model.id) }}"
                role="button"
                data-tooltip="Visualizar"
                class="pico-background-blue-500 container-fluid"><i class="bi bi-eye-fill"></i></a>
@@ -35,10 +35,14 @@
                role="button"
                data-tooltip="Editar"
                class="pico-background-yellow-100 container-fluid"><i class="bi bi-pencil-fill"></i></a>
-            <a href="#"
-               role="button"
-               data-tooltip="Excluir"
-               class="pico-background-red-500 container-fluid"><i class="bi bi-trash-fill"></i></a>
+            <form action="{{ url_for('service_order.delete', id=model.id) }}" method="post">
+              <button type="submit"
+                      role="button"
+                      data-tooltip="Excluir"
+                      class="pico-background-red-500">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </form>
             {% if model.aberto %}
               <form action="{{ url_for('service_order.change_status') }}" method="post">
                 <input type="hidden" name="id" value="{{ model.id }}">
