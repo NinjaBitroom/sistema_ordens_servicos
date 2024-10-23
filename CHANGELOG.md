@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.20.0 (2024-10-23)
+
+### Feat
+
+- rename data_ column to data in OrdemDeServicoModel
+- add index and limit to models
+
 ## 0.19.0 (2024-10-23)
 
 ### Feat
