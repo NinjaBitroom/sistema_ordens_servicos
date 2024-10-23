@@ -9,7 +9,7 @@ class EscolaridadeModel(SQLModel, table=True):
 
     __tablename__ = "Escolaridades"  # type: ignore  # noqa: PGH003
     id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str
+    nome: str = Field(index=True)
 
     def __repr__(self) -> str:
         """."""

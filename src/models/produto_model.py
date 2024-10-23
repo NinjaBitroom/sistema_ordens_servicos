@@ -15,7 +15,7 @@ class ProdutoModel(SQLModel, table=True):
 
     __tablename__ = "Produtos"  # type: ignore  # noqa: PGH003
     id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str
+    nome: str = Field(index=True)
     valor_venda: NonNegativeFloat
     quantidade_em_estoque: NonNegativeInt
     marca_id: NonNegativeInt | None = Field(
