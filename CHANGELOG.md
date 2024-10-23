@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.19.0 (2024-10-23)
+
+### Feat
+
+- add delete and detail views to all routes
+
 ## 0.18.0 (2024-10-22)
 
 ### Feat
