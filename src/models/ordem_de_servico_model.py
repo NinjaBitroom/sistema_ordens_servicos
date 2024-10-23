@@ -25,5 +25,7 @@ class OrdemDeServicoModel(SQLModel, table=True):
     cliente: ClienteModel | None = Relationship()
     descricao_do_problema: str = Field(sa_type=Text)
     valor_total_da_ordem: NonNegativeFloat
-    data_: date = Field(default_factory=date.today)
+    data_: date = Field(
+        default_factory=date.today, sa_column_kwargs={"name": "data"}
+    )
     aberto: bool = Field(default=True)
