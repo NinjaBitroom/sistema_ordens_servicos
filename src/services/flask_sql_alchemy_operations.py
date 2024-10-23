@@ -7,6 +7,7 @@ from flask_sqlalchemy_lite import SQLAlchemy
 from sqlmodel import SQLModel
 
 from src.protocols.db.db_add_one_operation import DbAddOneOperation
+from src.protocols.db.db_delete_operation import DbDeleteOperation
 from src.protocols.db.db_get_all_operation import DbGetAllOperation
 from src.protocols.db.db_get_one_operation import DbGetOneOperation
 from src.protocols.db.db_update_operation import DbUpdateOperation
@@ -18,6 +19,7 @@ class FlaskSqlAlchemyOperations[T: SQLModel](
     DbGetAllOperation[T],
     DbGetOneOperation[T],
     DbUpdateOperation[T],
+    DbDeleteOperation[T],
 ):
     """."""
 
@@ -43,4 +45,9 @@ class FlaskSqlAlchemyOperations[T: SQLModel](
         """."""
         for key, value in data.data.items():
             setattr(data.object, key, value)
+        self.__DB.session.commit()
+
+    def delete(self, data: T) -> None:
+        """."""
+        self.__DB.session.delete(data)
         self.__DB.session.commit()

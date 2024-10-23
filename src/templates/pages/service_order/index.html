@@ -29,13 +29,16 @@
           <td>
             <a href="#"
                role="button"
-               class="pico-background-blue-500 container-fluid">Visualizar</a>
+               data-tooltip="Visualizar"
+               class="pico-background-blue-500 container-fluid"><i class="bi bi-eye-fill"></i></a>
             <a href="#"
                role="button"
-               class="pico-background-yellow-100 container-fluid">Editar</a>
+               data-tooltip="Editar"
+               class="pico-background-yellow-100 container-fluid"><i class="bi bi-pencil-fill"></i></a>
             <a href="#"
                role="button"
-               class="pico-background-red-500 container-fluid">Excluir</a>
+               data-tooltip="Excluir"
+               class="pico-background-red-500 container-fluid"><i class="bi bi-trash-fill"></i></a>
             {% if model.aberto %}
               <form action="{{ url_for('service_order.change_status') }}" method="post">
                 <input type="hidden" name="id" value="{{ model.id }}">

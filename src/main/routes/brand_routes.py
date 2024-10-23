@@ -5,6 +5,9 @@ from flask import Blueprint
 from src.main.factories.views.brand.brand_create_view_factory import (
     make_brand_create_view,
 )
+from src.main.factories.views.brand.brand_delete_view_factory import (
+    make_brand_delete_view,
+)
 from src.main.factories.views.brand.brand_detail_view_factory import (
     make_brand_detail_view,
 )
@@ -20,4 +23,7 @@ BRAND_BLUEPRINT.add_url_rule(
 BRAND_BLUEPRINT.add_url_rule("/brand/", view_func=make_brand_index_view())
 BRAND_BLUEPRINT.add_url_rule(
     "/brand/<int:id>", view_func=make_brand_detail_view()
+)
+BRAND_BLUEPRINT.add_url_rule(
+    "/brand/delete/<int:id>", view_func=make_brand_delete_view()
 )
