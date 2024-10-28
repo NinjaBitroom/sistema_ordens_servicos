@@ -12,7 +12,7 @@ Create Date: ${create_date}
 from collections.abc import Sequence
 
 import sqlalchemy as sa
-from src.utils import all_types
+from src.utils import all_types as at
 from alembic import op
 ${imports if imports else ""}
 # revision identifiers, used by Alembic.

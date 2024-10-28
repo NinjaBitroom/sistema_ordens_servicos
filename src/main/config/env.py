@@ -24,5 +24,8 @@ def configure_env(app: Flask) -> None:
             "git.options": "add REVISION_SCRIPT_FILENAME",
         }
     }
-    app.config["ALEMBIC_CONTEXT"] = {"user_module_prefix": "all_types."}
+    app.config["ALEMBIC_CONTEXT"] = {
+        "user_module_prefix": "at.",
+        "render_as_batch": True,
+    }
     app.secret_key = environ.get("SECRET_KEY", "segredo!")

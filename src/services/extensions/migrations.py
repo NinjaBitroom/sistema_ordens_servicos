@@ -1,6 +1,7 @@
 """."""
 
 from flask_alembic import Alembic
-from sqlmodel import SQLModel
 
-ALEMBIC = Alembic(metadatas=SQLModel.metadata)
+from src.models.base.base_model import BaseModel
+
+ALEMBIC = Alembic(metadatas=BaseModel.metadata)

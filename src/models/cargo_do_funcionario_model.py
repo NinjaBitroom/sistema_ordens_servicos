@@ -1,15 +1,17 @@
 """."""
 
 from pydantic import NonNegativeInt
-from sqlmodel import Field, SQLModel  # type: ignore  # noqa: PGH003
+from sqlmodel import Field  # type: ignore[reportUnknownVariableType]
+
+from src.models.base.base_model import BaseModel
 
 
-class CargoDoFuncionarioModel(SQLModel, table=True):
+class CargoDoFuncionarioModel(BaseModel, table=True):
     """."""
 
-    __tablename__ = "Cargos dos funcionários"  # type: ignore  # noqa: PGH003
+    __tablename__ = "Cargos dos funcionários"
     id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str = Field(index=True)
+    nome: str = Field(index=True, unique=True)
 
     def __repr__(self) -> str:
         """."""
