@@ -54,11 +54,4 @@ class Mapper[TForm: FlaskForm, TModel: SQLModel](
         if not self.__MODEL:
             msg = "Model not set"
             raise ValueError(msg)
-        cleaned_data = {}
-        for field in self.__MODEL.model_fields:
-            if form.data.get(field) is None:
-                continue
-            if isinstance(form.data[field], SQLModel):
-                cleaned_data[f"{field}_id"] = form.data[field].id
-            cleaned_data[field] = form.data[field]
-        return self.__MODEL(**cleaned_data)
+        return self.__MODEL(**form.data)
