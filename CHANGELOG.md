@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.21.0 (2024-10-28)
+
+### BREAKING CHANGE
+
+- change metadata configuration
+
+### Feat
+
+- changes all tables
+
 ## 0.20.0 (2024-10-23)
 
 ### Feat
