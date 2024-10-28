@@ -12,16 +12,16 @@ repos:
     stages:
     - pre-push
   repo: https://github.com/commitizen-tools/commitizen
-  rev: v3.29.1
+  rev: v3.30.0
 - repo: https://github.com/pdm-project/pdm
-  rev: 2.19.2
+  rev: 2.19.3
   hooks:
   - id: pdm-lock-check
   - id: pdm-sync
   - id: pdm-export
     args: ['-o', 'requirements.txt', '--without-hashes']
 - repo: https://github.com/RobertCraigie/pyright-python
-  rev: v1.1.384
+  rev: v1.1.386
   hooks:
   - id: pyright
 - repo: https://github.com/astral-sh/ruff-pre-commit
