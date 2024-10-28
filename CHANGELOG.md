@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 (2024-10-28)
+
+### Fix
+
+- simplify form to model conversion
+
 ## 1.0.0 (2024-10-28)
 
 ## 0.21.0 (2024-10-28)
