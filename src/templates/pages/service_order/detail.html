@@ -6,7 +6,7 @@
     <tbody>
       {% for field in model %}
         <tr>
-          <td>{{ field[0] }}</td>
+          <td>{{ model.model_fields[field[0]].title or field[0] }}</td>
           <td>{{ field[1] }}</td>
         </tr>
       {% endfor %}
