@@ -18,14 +18,14 @@ class SqlModelConverter(ModelConverter):
         self, field_args: Mapping[Any, Any], **extra: object
     ) -> StringField:
         """."""
-        return self.conv_String(field_args, **extra)  # type: ignore  # noqa: PGH003
+        return self.conv_String(field_args, **extra)  # type: ignore[reportUnknownMemberType]
 
     @converts("sqlalchemy_utils.types.phone_number.PhoneNumberType")
     def conv_phone_number(
         self, field_args: Mapping[Any, Any], **extra: object
     ) -> TelField:
         """."""
-        self._string_common(field_args=field_args, **extra)  # type: ignore  # noqa: PGH003
+        self._string_common(field_args=field_args, **extra)  # type: ignore[reportUnknownMemberType]
         return TelField(**field_args)
 
     @converts("sqlalchemy_utils.types.email.EmailType")
@@ -33,5 +33,5 @@ class SqlModelConverter(ModelConverter):
         self, field_args: Mapping[Any, Any], **extra: object
     ) -> EmailField:
         """."""
-        self._string_common(field_args=field_args, **extra)  # type: ignore  # noqa: PGH003
+        self._string_common(field_args=field_args, **extra)  # type: ignore[reportUnknownMemberType]
         return EmailField(**field_args)
