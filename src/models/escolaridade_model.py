@@ -10,8 +10,10 @@ class EscolaridadeModel(BaseModel, table=True):
     """."""
 
     __tablename__ = "Escolaridades"
-    id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str = Field(index=True, unique=True)
+    id: NonNegativeInt | None = Field(
+        default=None, primary_key=True, title="ID"
+    )
+    nome: str = Field(index=True, unique=True, title="Nome")
 
     def __repr__(self) -> str:
         """."""

@@ -25,16 +25,8 @@ def make_client_create_view() -> RouteCallable:
         FlaskForm,
         model_form_config={
             "field_args": {
-                "cpf": {"label": "CPF"},
-                "email": {"label": "E-mail"},
-                "telefone_celular": {"label": "Celular"},
-                "endereco_rua": {"label": "Rua"},
-                "endereco_bairro": {"label": "Bairro"},
-                "endereco_numero": {"label": "Número"},
-                "endereco_cep": {"label": "CEP"},
-                "data_de_cadastro_no_sistema": {
-                    "label": "Data de Cadastro no Sistema"
-                },
+                field: {"label": ClienteModel.model_fields[field].title}
+                for field in ClienteModel.model_fields
             },
         },
     )

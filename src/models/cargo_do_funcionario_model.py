@@ -10,8 +10,10 @@ class CargoDoFuncionarioModel(BaseModel, table=True):
     """."""
 
     __tablename__ = "Cargos dos funcionários"
-    id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str = Field(index=True, unique=True)
+    id: NonNegativeInt | None = Field(
+        default=None, primary_key=True, title="ID"
+    )
+    nome: str = Field(index=True, unique=True, title="Nome")
 
     def __repr__(self) -> str:
         """."""

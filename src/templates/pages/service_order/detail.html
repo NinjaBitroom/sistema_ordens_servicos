@@ -4,10 +4,10 @@
   <h1>Detalhes da Ordem de Serviço</h1>
   <table>
     <tbody>
-      {% for field in model %}
+      {% for field_name, field_value in model %}
         <tr>
-          <td>{{ model.model_fields[field[0]].title or field[0] }}</td>
-          <td>{{ field[1] }}</td>
+          <td>{{ model.model_fields[field_name].title or field_name }}</td>
+          <td>{{ field_value }}</td>
         </tr>
       {% endfor %}
     </tbody>

@@ -1,6 +1,8 @@
 """."""
 
-from pydantic import NonNegativeFloat, NonNegativeInt
+from decimal import Decimal
+
+from pydantic import NonNegativeInt
 from sqlmodel import (
     Field,  # pyright: ignore[reportUnknownVariableType]
     Relationship,
@@ -14,12 +16,21 @@ class ProdutoModel(BaseModel, table=True):
     """."""
 
     __tablename__ = "Produtos"
-    id: NonNegativeInt | None = Field(default=None, primary_key=True)
-    nome: str = Field(index=True)
-    valor_venda: NonNegativeFloat
-    quantidade_em_estoque: NonNegativeInt
+    id: NonNegativeInt | None = Field(
+        default=None, primary_key=True, title="ID"
+    )
+    nome: str = Field(index=True, unique=True, title="Nome")
+    valor_venda: Decimal = Field(
+        title="Valor de venda", decimal_places=2, ge=0
+    )
+    quantidade_em_estoque: NonNegativeInt = Field(
+        title="Quantidade em estoque"
+    )
     marca_id: NonNegativeInt | None = Field(
-        default=None, foreign_key="Marcas.id", nullable=False
+        default=None,
+        foreign_key="Marcas.id",
+        nullable=False,
+        title="ID da marca",
     )
     marca: MarcaModel | None = Relationship()
 

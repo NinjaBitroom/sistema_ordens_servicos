@@ -17,8 +17,8 @@ class TelefonesModel(BaseModel):
     """."""
 
     telefone_fixo: PhoneNumber | None = Field(
-        sa_type=cast(type, PhoneNumberType(region="BR"))
+        sa_type=cast(type, PhoneNumberType(region="BR")), title="Telefone fixo"
     )
     telefone_celular: PhoneNumber | None = Field(
-        sa_type=cast(type, PhoneNumberType(region="BR"))
+        sa_type=cast(type, PhoneNumberType(region="BR")), title="Celular"
     )

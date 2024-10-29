@@ -1,6 +1,8 @@
 """."""
 
-from pydantic import NonNegativeFloat, NonNegativeInt
+from decimal import Decimal
+
+from pydantic import NonNegativeInt
 from sqlmodel import (
     Field,  # pyright: ignore[reportUnknownVariableType]
     Relationship,
@@ -14,9 +16,11 @@ class ContaAReceberModel(BaseModel, table=True):
     """."""
 
     __tablename__ = "Contas a receber"
-    id: NonNegativeInt | None = Field(default=None, primary_key=True)
+    id: NonNegativeInt | None = Field(
+        default=None, primary_key=True, title="ID"
+    )
     ordem_de_servico_id: NonNegativeInt | None = Field(
-        foreign_key="Ordens de serviço.id"
+        foreign_key="Ordens de serviço.id", title="ID da ordem de serviço"
     )
     ordem_de_servico: OrdemDeServicoModel | None = Relationship()
-    valor: NonNegativeFloat
+    valor: Decimal = Field(title="Valor", decimal_places=2, ge=0)
