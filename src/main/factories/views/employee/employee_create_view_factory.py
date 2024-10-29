@@ -1,7 +1,7 @@
 """."""
 
 from flask.typing import RouteCallable
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from flask_wtf import FlaskForm  # pyright: ignore[reportMissingTypeStubs]
 
 from src.controllers.employee.employee_create_controller import (
     EmployeeCreateController,

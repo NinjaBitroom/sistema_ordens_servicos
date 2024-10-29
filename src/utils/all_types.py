@@ -1,4 +1,4 @@
 """."""
 
-from sqlalchemy_utils import *  # type: ignore  # noqa: F403, PGH003
-from sqlmodel import *  # type: ignore  # noqa: F403, PGH003
+from sqlalchemy_utils import *  # pyright: ignore[reportWildcardImportFromLibrary, reportMissingTypeStubs]  # noqa: F403
+from sqlmodel import *  # pyright: ignore[reportWildcardImportFromLibrary]  # noqa: F403

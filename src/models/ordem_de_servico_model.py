@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlalchemy import Text
 from sqlmodel import (
-    Field,  # type: ignore[reportUnknownVariableType]
+    Field,  # pyright: ignore[reportUnknownVariableType]
     Relationship,
 )
 

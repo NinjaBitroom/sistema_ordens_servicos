@@ -7,7 +7,7 @@ from sqlmodel import SQLModel
 class BaseModel(SQLModel):
     """."""
 
-    __tablename__: str  # type: ignore[reportIncompatibleVariableOverride]
+    __tablename__: str  # pyright: ignore[reportIncompatibleVariableOverride]
     metadata = MetaData(
         naming_convention={
             "ix": "ix_%(column_0_label)s",

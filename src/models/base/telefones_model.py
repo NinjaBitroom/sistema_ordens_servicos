@@ -3,10 +3,10 @@
 from typing import cast
 
 from pydantic_extra_types.phone_numbers import PhoneNumber
-from sqlalchemy_utils import (  # type: ignore[reportMissingTypeStubs]
+from sqlalchemy_utils import (  # pyright: ignore[reportMissingTypeStubs]
     PhoneNumberType,
 )
-from sqlmodel import Field  # type: ignore[reportUnknownVariableType]
+from sqlmodel import Field  # pyright: ignore[reportUnknownVariableType]
 
 from src.models.base.base_model import BaseModel
 

@@ -4,9 +4,11 @@ from datetime import date
 
 from pydantic import EmailStr, NonNegativeInt, PastDate
 from sqlalchemy import Date
-from sqlalchemy_utils import EmailType  # type: ignore[reportMissingTypeStubs]
+from sqlalchemy_utils import (  # pyright: ignore[reportMissingTypeStubs]
+    EmailType,
+)
 from sqlmodel import (
-    Field,  # type: ignore[reportUnknownVariableType]
+    Field,  # pyright: ignore[reportUnknownVariableType]
     Relationship,
 )
 

@@ -2,7 +2,7 @@
 
 from pydantic import NonNegativeFloat, NonNegativeInt
 from sqlmodel import (
-    Field,  # type: ignore[reportUnknownVariableType]
+    Field,  # pyright: ignore[reportUnknownVariableType]
     Relationship,
 )
 

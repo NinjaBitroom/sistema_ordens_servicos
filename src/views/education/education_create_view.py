@@ -4,7 +4,7 @@ from http import HTTPMethod
 
 from flask import flash, redirect, render_template, url_for
 from flask.views import MethodView
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from flask_wtf import FlaskForm  # pyright: ignore[reportMissingTypeStubs]
 
 from src.models.escolaridade_model import EscolaridadeModel
 from src.protocols.controller import Controller

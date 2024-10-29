@@ -2,7 +2,7 @@
 
 from http import HTTPStatus
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from flask_wtf import FlaskForm  # pyright: ignore[reportMissingTypeStubs]
 
 from src.models.funcionario_model import FuncionarioModel
 from src.protocols.controller import Controller

@@ -1,8 +1,10 @@
 """."""
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from flask_wtf import FlaskForm  # pyright: ignore[reportMissingTypeStubs]
 from sqlmodel import SQLModel
-from wtforms_sqlalchemy.orm import model_form  # type: ignore  # noqa: PGH003
+from wtforms_sqlalchemy.orm import (  # pyright: ignore[reportMissingTypeStubs]
+    model_form,  # pyright: ignore[reportUnknownVariableType]
+)
 
 from src.protocols.form.model_form_config import ModelFormConfig
 from src.protocols.helpers.form_to_model_operation import FormToModelOperation

@@ -4,7 +4,7 @@ from collections.abc import Iterable, Mapping
 from typing import Any, TypedDict
 
 from sqlmodel import Session
-from wtforms_sqlalchemy.orm import (  # type: ignore  # noqa: PGH003
+from wtforms_sqlalchemy.orm import (  # pyright: ignore[reportMissingTypeStubs]
     ModelConverterBase,
 )
 

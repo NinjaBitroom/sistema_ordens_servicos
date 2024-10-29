@@ -3,8 +3,10 @@
 from datetime import date
 
 from pydantic import EmailStr, NonNegativeInt
-from sqlalchemy_utils import EmailType  # type: ignore[reportMissingTypeStubs]
-from sqlmodel import Field  # type: ignore[reportUnknownVariableType]
+from sqlalchemy_utils import (  # pyright: ignore[reportMissingTypeStubs]
+    EmailType,
+)
+from sqlmodel import Field  # pyright: ignore[reportUnknownVariableType]
 
 from src.models.base.endereco_model import EnderecoModel
 from src.models.base.telefones_model import TelefonesModel

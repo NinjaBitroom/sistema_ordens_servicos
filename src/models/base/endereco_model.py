@@ -1,6 +1,6 @@
 """."""
 
-from sqlmodel import Field  # type: ignore[reportUnknownVariableType]
+from sqlmodel import Field  # pyright: ignore[reportUnknownVariableType]
 
 from src.models.base.base_model import BaseModel
 

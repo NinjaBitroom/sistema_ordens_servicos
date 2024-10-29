@@ -2,7 +2,7 @@
 
 from http import HTTPStatus
 
-from flask_wtf import FlaskForm  # type: ignore  # noqa: PGH003
+from flask_wtf import FlaskForm  # pyright: ignore[reportMissingTypeStubs]
 
 from src.models.marca_model import MarcaModel
 from src.protocols.controller import Controller
