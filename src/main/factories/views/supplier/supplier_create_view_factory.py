@@ -20,21 +20,13 @@ def make_supplier_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(FornecedorModel)
     data_access_object = FlaskSqlAlchemyOperations(FornecedorModel, DB)
+    fields = FornecedorModel.model_fields
     mapper = Mapper(
         FornecedorModel,
         FlaskForm,
-        model_form_config={
+        {
             "field_args": {
-                "cnpj": {"label": "CNPJ"},
-                "email": {"label": "E-mail"},
-                "telefone_celular": {"label": "Celular"},
-                "endereco_rua": {"label": "Rua"},
-                "endereco_bairro": {"label": "Bairro"},
-                "endereco_numero": {"label": "Número"},
-                "endereco_cep": {"label": "CEP"},
-                "data_de_cadastro_no_sistema": {
-                    "label": "Data de Cadastro no Sistema"
-                },
+                field: {"label": fields[field].title} for field in fields
             },
         },
     )

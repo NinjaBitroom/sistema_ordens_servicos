@@ -22,16 +22,14 @@ def make_service_order_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(OrdemDeServicoModel)
     data_access_object = FlaskSqlAlchemyOperations(OrdemDeServicoModel, DB)
+    fields = OrdemDeServicoModel.model_fields
     mapper = Mapper(
         OrdemDeServicoModel,
         FlaskForm,
-        model_form_config={
+        {
             "exclude": ["aberto"],
             "field_args": {
-                "tecnico": {"label": "Técnico"},
-                "descricao_do_problema": {"label": "Descrição do Problema"},
-                "valor_total_da_ordem": {"label": "Valor Total"},
-                "data_": {"label": "Data"},
+                field: {"label": fields[field].title} for field in fields
             },
         },
     )

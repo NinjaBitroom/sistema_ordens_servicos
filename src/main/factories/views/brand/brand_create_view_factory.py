@@ -18,7 +18,16 @@ def make_brand_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(MarcaModel)
     data_access_object = FlaskSqlAlchemyOperations(MarcaModel, DB)
-    mapper = Mapper(MarcaModel, FlaskForm, {})
+    fields = MarcaModel.model_fields
+    mapper = Mapper(
+        MarcaModel,
+        FlaskForm,
+        {
+            "field_args": {
+                field: {"label": fields[field].title} for field in fields
+            }
+        },
+    )
     controller = BrandCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )

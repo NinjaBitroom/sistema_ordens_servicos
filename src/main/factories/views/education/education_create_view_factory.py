@@ -20,7 +20,16 @@ def make_education_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(EscolaridadeModel)
     data_access_object = FlaskSqlAlchemyOperations(EscolaridadeModel, DB)
-    mapper = Mapper(EscolaridadeModel, FlaskForm, {})
+    fields = EscolaridadeModel.model_fields
+    mapper = Mapper(
+        EscolaridadeModel,
+        FlaskForm,
+        {
+            "field_args": {
+                field: {"label": fields[field].title} for field in fields
+            }
+        },
+    )
     controller = EducationCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )

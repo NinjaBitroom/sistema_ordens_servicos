@@ -20,14 +20,14 @@ def make_client_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(ClienteModel)
     data_access_object = FlaskSqlAlchemyOperations(ClienteModel, DB)
+    fields = ClienteModel.model_fields
     mapper = Mapper(
         ClienteModel,
         FlaskForm,
-        model_form_config={
+        {
             "field_args": {
-                field: {"label": ClienteModel.model_fields[field].title}
-                for field in ClienteModel.model_fields
-            },
+                field: {"label": fields[field].title} for field in fields
+            }
         },
     )
     controller = ClientCreateController(

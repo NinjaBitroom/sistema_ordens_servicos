@@ -20,7 +20,16 @@ def make_product_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(ProdutoModel)
     data_access_object = FlaskSqlAlchemyOperations(ProdutoModel, DB)
-    mapper = Mapper(ProdutoModel, FlaskForm, {})
+    fields = ProdutoModel.model_fields
+    mapper = Mapper(
+        ProdutoModel,
+        FlaskForm,
+        {
+            "field_args": {
+                field: {"label": fields[field].title} for field in fields
+            }
+        },
+    )
     controller = ProductCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )

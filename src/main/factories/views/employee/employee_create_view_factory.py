@@ -20,20 +20,14 @@ def make_employee_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(FuncionarioModel)
     data_access_object = FlaskSqlAlchemyOperations(FuncionarioModel, DB)
+    fields = FuncionarioModel.model_fields
     mapper = Mapper(
         FuncionarioModel,
         FlaskForm,
-        model_form_config={
+        {
             "field_args": {
-                "cpf": {"label": "CPF"},
-                "email": {"label": "E-mail"},
-                "telefone_celular": {"label": "Celular"},
-                "endereco_rua": {"label": "Rua"},
-                "endereco_bairro": {"label": "Bairro"},
-                "endereco_numero": {"label": "Número"},
-                "endereco_cep": {"label": "CEP"},
-                "data_de_cadastro": {"label": "Data de Cadastro no Sistema"},
-            },
+                field: {"label": fields[field].title} for field in fields
+            }
         },
     )
     controller = EmployeeCreateController(

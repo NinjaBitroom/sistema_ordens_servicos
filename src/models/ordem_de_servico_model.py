@@ -14,11 +14,10 @@ from sqlmodel import (
 from src.models.base.base_model import BaseModel
 from src.models.cliente_model import ClienteModel
 from src.models.funcionario_model import FuncionarioModel
+from src.models.item_da_ordem_de_servico_model import ItemDaOrdemDeServicoModel
 
 if TYPE_CHECKING:
-    from src.models.item_da_ordem_de_servico_model import (
-        ItemDaOrdemDeServicoModel,
-    )
+    from src.models.produto_model import ProdutoModel
 
 
 class OrdemDeServicoModel(BaseModel, table=True):
@@ -27,9 +26,6 @@ class OrdemDeServicoModel(BaseModel, table=True):
     __tablename__ = "Ordens de serviço"
     id: NonNegativeInt | None = Field(
         default=None, primary_key=True, title="ID"
-    )
-    itens_da_ordem_de_servico: list["ItemDaOrdemDeServicoModel"] = (
-        Relationship(back_populates="ordem_de_servico")
     )
     tecnico_id: NonNegativeInt | None = Field(
         foreign_key="Funcionários.id", nullable=False, title="ID do técnico"
@@ -51,3 +47,7 @@ class OrdemDeServicoModel(BaseModel, table=True):
         title="Data",
     )
     aberto: bool = Field(default=True, title="Aberto")
+    produtos: list["ProdutoModel"] = Relationship(
+        link_model=ItemDaOrdemDeServicoModel,
+        back_populates="ordens_de_servico",
+    )

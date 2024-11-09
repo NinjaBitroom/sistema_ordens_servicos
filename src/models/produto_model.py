@@ -9,7 +9,9 @@ from sqlmodel import (
 )
 
 from src.models.base.base_model import BaseModel
+from src.models.item_da_ordem_de_servico_model import ItemDaOrdemDeServicoModel
 from src.models.marca_model import MarcaModel
+from src.models.ordem_de_servico_model import OrdemDeServicoModel
 
 
 class ProdutoModel(BaseModel, table=True):
@@ -33,6 +35,9 @@ class ProdutoModel(BaseModel, table=True):
         title="ID da marca",
     )
     marca: MarcaModel | None = Relationship()
+    ordens_de_servico: list[OrdemDeServicoModel] = Relationship(
+        link_model=ItemDaOrdemDeServicoModel, back_populates="produtos"
+    )
 
     def __repr__(self) -> str:
         """."""

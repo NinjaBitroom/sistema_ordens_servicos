@@ -22,7 +22,16 @@ def make_employee_position_create_view() -> RouteCallable:
     flask_wtf_validation = FlaskWtfValidation()
     sql_model_validation = SqlModelValidation(CargoDoFuncionarioModel)
     data_access_object = FlaskSqlAlchemyOperations(CargoDoFuncionarioModel, DB)
-    mapper = Mapper(CargoDoFuncionarioModel, FlaskForm, {})
+    fields = CargoDoFuncionarioModel.model_fields
+    mapper = Mapper(
+        CargoDoFuncionarioModel,
+        FlaskForm,
+        {
+            "field_args": {
+                field: {"label": fields[field].title} for field in fields
+            }
+        },
+    )
     controller = EmployeePositionCreateController(
         flask_wtf_validation, data_access_object, mapper, sql_model_validation
     )
